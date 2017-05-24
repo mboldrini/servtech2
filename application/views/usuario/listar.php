@@ -17,15 +17,15 @@
     <table class="table table-striped">
         
         <thead>
-    		<tr>
-              	<th>ID</th>
-              	<th>Login</th>
-              	<th>Nome</th>
-              	<th>Telefone</th>
-              	<th>Email</th>
-              	<th>Descrição/Cargo</th>
-              	<th>Opções</th>
-            </tr>
+    		  <tr>
+           	<th>ID</th>
+           	<th>Login</th>
+           	<th>Nome</th>
+           	<th>Telefone</th>
+           	<th>Email</th>
+           	<th>Descrição/Cargo</th>
+           	<th>Opções</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -52,9 +52,7 @@
             				<a class="btn btn-info" href="<?= base_url('contas/editar/' . $usuario->id) ?>" role="button">
             					<i class="fa fa-pencil "></i>  Editar
             				</a>
-            				<a class="btn btn-danger" href="#" role="button">
-            					<i class="fa fa-trash "></i>  Excluir
-            				</a>
+                    <a class="btn btn-danger" href="<?= base_url('contas/excluir/' . $usuario->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
             			</td>
             		<?php } ?>
             	</tr>

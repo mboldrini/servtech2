@@ -178,8 +178,34 @@ class Contas extends CI_Controller {
 
 		$this->load->view('tela',$dados);
 
-	}//index
+	}
+
 	
+	public function excluir()	{
+
+		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$idExcluir = $this->uri->segment(3);
+
+		$dados = array(
+			'pasta'		=> 'usuario',
+			'tela' 		=> 'excluir',
+			'titulo' 	=> 'Excluir Usuario',
+			'infos' 	=> $pegaInfos,
+			'idUsuario'	=> $idExcluir,
+		);
+
+		$this->load->view('tela',$dados);
+
+	}	
 
 
 }

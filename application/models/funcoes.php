@@ -47,4 +47,18 @@ class Funcoes extends CI_Model {
 	}
 
 
+	// funcao publica para exclusao de um id de qualquer tabela
+	public function delete($id, $tabela, $redireciona){
+
+			// $id 			=> é o id a ser excluido
+			// $tabela 		=> qual tabela será afetada 
+			// $redireciona => vai redirecionar pra onde depois de executar tudo
+
+			$this->db->delete($tabela,$id);
+
+			redirect( base_url() . $redireciona );
+			
+	}// funcao do_delete
+
+
 }
