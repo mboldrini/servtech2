@@ -40,6 +40,11 @@ class Funcoes extends CI_Model {
 		}
 	}
 
+	public function insert($dados, $tabela){
+		if($dados != NULL){
+			$this->db->insert($tabela, $dados );			
+		}
+	}
 
 
 }

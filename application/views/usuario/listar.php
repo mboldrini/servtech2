@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-md-2 pull-right">
-		<a class="btn btn-primary pull-right" href="" role="button">
+		<a class="btn btn-primary pull-right" href="<?= base_url() ?>contas/cadastrar" role="button">
         	<i class="fa fa-plus-square "> </i>  Cadastrar Usuário
     	</a>
 	</div><!-- md-2 pull-right-->
