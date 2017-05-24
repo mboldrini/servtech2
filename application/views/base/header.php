@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="<?= base_url(); ?>/assets/dist/css/skins/skin-blue.min.css">
 
+  <link rel="stylesheet" href="<?= base_url(); ?>/assets/style.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -89,7 +91,7 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-success btn-flat">Perfil</a>
+                  <a href="<?= base_url() ?>perfil" class="btn btn-success btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= base_url() ?>login/logout_ci" class="btn btn-danger btn-flat">Sair</a>
