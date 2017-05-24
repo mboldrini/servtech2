@@ -4,6 +4,30 @@
 
 <?php echo form_open(); ?>
 
+<?php 
+  if( $mensagem ){
+    echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  '.$mensagem[0].'</div>';
+  }
+?>
+
+  <?php form_hidden('id', $infos[0]->id ); ?>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">ID:</label>
+    <?php echo form_input(
+      'id', 
+      $infos[0]->id ,
+      array( 'class'        =>  'form-control col-md-3',
+             'required'     =>  'required',
+             'placeholder'  =>  'id',
+             'readonly'     => 'readonly',
+            ) 
+        ); 
+    ?>
+  </div>
+
   <div class="form-group">
     <label for="exampleInputEmail1">Nome:</label>
     <?php echo form_input(
@@ -51,7 +75,7 @@
     <?php echo form_input(
       'telefone', 
       $infos[0]->telefone ,
-      array( 'class'		=>	'form-control col-md-3',
+      array( 'class'		=>	'form-control',
              'placeholder'	=>	'Telefone',
             ) 
         ); 
@@ -72,43 +96,31 @@
   </div>
 
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Cor do Tema:</label>
-    <!-- <select class="form-control" id="cor" name="cor">
-		<option value="skin-blue">Azul</option>
-  		<option value="skin-purple">Roxo</option>
-  		<option value="skin-yellow">Amarelo</option>
-  		<option value="skin-green">Verde</option>
-  		<option value="skin-red">Vermelho</option>
-	</select> -->
-	
+	<div class="form-group">
+    	<label for="exampleInputEmail1">Cor do Tema:</label>
+		<?php 
+			$cores = array(
+				"Vermelho"	=>	"skin-red", 
+				"Azul"		=>	"skin-blue",
+				"Verde"		=>	"skin-green",
+				"Amarelo"	=>	"skin-yellow",
+				"Roxo"		=>	"skin-purple",
+			);
+		?>	
+		<select name="cor" id="cor" class="form-control">
+			<?php foreach( $cores as $key => $cor ): ?>
+				<?php if( $infos[0]->cor == $cor ){ ?>
+					<option value="<?php echo $cor; ?>" selected><?php echo $key; ?></option>
+				<?php }else{ ?>
+					<option value="<?php echo $cor; ?>"><?php echo $key; ?></option>
+				<?php } ?>
+			<?php endforeach; ?>
+		</select>
+	</div>
 
-	<?php 
-		$cores = array(
-			"Vermelho"	=>	"skin-red", 
-			"Azul"		=>	"skin-blue",
-			"Verde"		=>	"skin-green",
-			"Amarelo"	=>	"skin-yellow",
-			"Roxo"		=>	"skin-purple",
-		);
-	?>	
-	<select name="cor" id="cor" class="form-control">
-		<?php foreach( $cores as $key => $cor ): ?>
-			<?php if( $infos[0]->cor == $cor ){ ?>
-				<option value="<?php echo $cor; ?>" selected><?php echo $key; ?></option>
-			<?php }else{ ?>
-				<option value="<?php echo $cor; ?>"><?php echo $key; ?></option>
-			<?php } ?>
-		<?php endforeach; ?>
-	</select>
-
-
-  </div>
-
-
-  <button type="submit" class="btn btn-primary">Editar</button>
+	<button type="submit" class="btn btn-primary">Editar</button>
 
 <?php form_close(); ?>
 
-	</div>
+	</div><!--col-md-4-->
 </div><!--row-->

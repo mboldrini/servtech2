@@ -21,6 +21,10 @@
                         <td><?php echo $infos[0]->username; ?></td>
                       </tr>
                       <tr>
+                        <td>Telefone:</td>
+                        <td><?php echo $infos[0]->telefone; ?></td>
+                      </tr>
+                      <tr>
                         <td>Email:</td>
                         <td><?php echo $infos[0]->email; ?></td>
                       </tr>
