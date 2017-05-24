@@ -17,5 +17,29 @@ class Funcoes extends CI_Model {
 	}//update
 
 
+	public function getAll($tabela){
+		$query = $this->db->get($tabela);
+		if( $query->num_rows() > 0){
+			return $query->result();
+		}
+	}
+
+
+	public function getById( $id, $tabela ){
+		if( $id != NULL ){
+			/* seleciona no DB onde o campo ID == $id */
+			$this->db->where('id',$id);
+			
+			/* mostra apenas 1 resultado, e TEM q ser 1 resultado pois ID é unico */
+			$this->db->limit(1);
+			
+			/* pega a tabela aluno */
+			return $this->db->get($tabela)->row();
+		}else{
+			return FALSE;			
+		}
+	}
+
+
 
 }

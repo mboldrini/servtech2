@@ -11,7 +11,8 @@
         
         <li class="header">Administrativo</li>
         <li><a href="<?= base_url(); ?>perfil"><i class="fa fa-user"></i> <span>Perfil</span></a></li>
-        
+        <li><a href="<?= base_url(); ?>contas"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+
 
       </ul>
       <!-- /.sidebar-menu -->
