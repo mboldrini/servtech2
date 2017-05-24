@@ -55,13 +55,56 @@ class Contas extends CI_Controller {
 
 		$idEditar = $this->uri->segment(3);
 
+		$mensagem = [];
+
+		#validacao do formulario
+		$this->form_validation->set_rules('nome', 			'Nome',			'trim|required');
+		$this->form_validation->set_rules('sobrenome', 		'Sobrenome',	'trim|required');
+		$this->form_validation->set_rules('email', 			'Email', 		'trim|required');
+		$this->form_validation->set_rules('telefone', 		'Telefone',		'trim');
+		$this->form_validation->set_rules('descricao', 		'Descrição', 	'trim');
+
+		$id 		= $this->input->post('id');
+		$username	= $this->input->post('username');
+		$nome 		= $this->input->post('nome');
+		$sobrenome 	= $this->input->post('sobrenome');
+		$email 		= $this->input->post('email');
+		$telefone 	= $this->input->post('telefone');
+		$descricao 	= $this->input->post('descricao');
+
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
+			
+			$idUsuario = array('id'=> $id);
+
+			$registra = array(
+				"username"	=> $username,
+				"nome" 		=> $nome,
+				"sobrenome" => $sobrenome,
+				"email" 	=> $email,
+				"telefone" 	=> $telefone,
+				"descricao" => $descricao,
+			);
+
+			$this->funcoes->update($registra, 'users', $idUsuario );
+
+
+			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um usuário!';
+			$mensagem[1] = 'alert-success';
+
+		}
+
 		$dados = array(
 			'pasta'		=> 'usuario',
 			'tela' 		=> 'editar',
 			'titulo' 	=> 'Editar Registro de Usuário',
 			'infos' 	=> $pegaInfos,
-			'contas' 	=> $this->funcoes->getAll('users'),
-			'usuario'	=> $this->funcoes->getById($idEditar),
+			'editar'	=> $this->funcoes->getById($idEditar, 'users'),
+			'mensagem'	=> $mensagem,
 		);
 
 		$this->load->view('tela',$dados);
