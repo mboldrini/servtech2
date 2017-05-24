@@ -35,10 +35,10 @@
               </div>
             </div>
                 <div class="panel-footer">
-                    <a class="btn btn-primary" href="#" role="button"><i class="fa fa-pencil"></i>  Editar</a>
+                    <a class="btn btn-primary" href="<?= base_url() ?>perfil/editar" role="button"><i class="fa fa-pencil"></i>  Editar</a>
 
                     <span class="pull-right">
-                      	<a class="btn btn-danger" href="#" role="button"><i class="fa fa-sign-out"></i>  Sair</a>
+                      	<a class="btn btn-danger" href="<?= base_url() ?>login/logout_ci" role="button"><i class="fa fa-sign-out"></i>  Sair</a>
 	                </span>
     
                 </div>

@@ -7,9 +7,12 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
-        <!-- Optionally, you can add icons to the links -->
         <li><a href="<?= base_url(); ?>painel"><i class="fa fa-dashboard"></i> <span>Painel</span></a></li>
         
+        <li class="header">Administrativo</li>
+        <li><a href="<?= base_url(); ?>perfil"><i class="fa fa-user"></i> <span>Perfil</span></a></li>
+        
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>

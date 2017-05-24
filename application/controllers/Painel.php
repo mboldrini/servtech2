@@ -32,7 +32,7 @@ class Painel extends CI_Controller {
 			'pasta'=> 'base',
 			'tela' => 'content',
 			'titulo' => 'Painel Administrativo',
-			'descricao' => ' - Configurações do Sistema',
+			'descricao' => ' - Painel Geral do Sistema',
 			'infos' => $pegaInfos,
 		);
 

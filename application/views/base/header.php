@@ -22,7 +22,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/dist/css/skins/skin-blue.min.css">
+  <!-- <link rel="stylesheet" href="<?= base_url(); ?>/assets/dist/css/skins/skin-blue.min.css"> -->
+  <link rel="stylesheet" href="<?= base_url(); ?>/assets/dist/css/skins/_all-skins.css">
+
 
   <link rel="stylesheet" href="<?= base_url(); ?>/assets/style.css">
 
@@ -53,7 +55,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini <?php if( $infos[0]->cor != NULL ){ echo $infos[0]->cor; }else{ echo 'skin-blue'; } ?>">
 <div class="wrapper">
 
    <header class="main-header">
