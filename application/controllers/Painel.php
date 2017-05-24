@@ -29,13 +29,14 @@ class Painel extends CI_Controller {
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
 		$dados = array(
+			'pasta'=> 'base',
 			'tela' => 'content',
 			'titulo' => 'Painel Administrativo',
 			'descricao' => ' - Configurações do Sistema',
 			'infos' => $pegaInfos,
 		);
 
-		$this->load->view('painel',$dados);
+		$this->load->view('tela',$dados);
 
 	}//index
 

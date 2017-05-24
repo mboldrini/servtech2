@@ -3,7 +3,7 @@
 	$this ->load-> view('base/header');
 	$this ->load-> view('base/sidebar');
 	if($tela != ''){
-		 $this -> load -> view('base/'.$tela);
+		 $this -> load -> view($pasta.'/'.$tela);
 	}else{
 		redirect('/');
 	}
