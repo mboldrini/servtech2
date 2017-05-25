@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Maio-2017 às 21:31
+-- Generation Time: 25-Maio-2017 às 17:21
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -28,11 +28,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `aviso` (
   `id` int(11) NOT NULL,
-  `titulo` varchar(45) DEFAULT NULL,
-  `aviso` varchar(200) DEFAULT NULL,
-  `cor` varchar(45) DEFAULT NULL,
-  `idUsuario` int(11) DEFAULT NULL
+  `titulo` varchar(45) NOT NULL,
+  `aviso` varchar(200) NOT NULL,
+  `cor` varchar(45) NOT NULL,
+  `ativo` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `aviso`
+--
+
+INSERT INTO `aviso` (`id`, `titulo`, `aviso`, `cor`, `ativo`, `idUsuario`) VALUES
+(1, 'Opa! Titulo da mensagem', 'aviso a ser exibido na mensagem', 'alert-danger', 1, 1),
+(2, 'Opa! titulo 2 da mensagem', 'aviso a ser exibido na mensagem', 'alert-success', 0, 1),
+(3, 'MaoÊ!', 'Silvio Santos Paçou aki!', 'alert-info', 1, 2),
+(4, 'iojeoieujt', 'oijkljsldkgjsdlgkj', 'alert-warning', 0, 3),
+(5, 'asflkasfj', 'asflkajsflkasfjlk', 'alert-success', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -192,19 +204,49 @@ ALTER TABLE `valser`
 --
 
 --
+-- AUTO_INCREMENT for table `aviso`
+--
+ALTER TABLE `aviso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Limitadores para a tabela `aviso`
+--
+ALTER TABLE `aviso`
+  ADD CONSTRAINT `idusuario` FOREIGN KEY (`idUsuario`) REFERENCES `users` (`id`);
+
+--
+-- Limitadores para a tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `usuariocadastrou` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
+
+--
 -- Limitadores para a tabela `servico`
 --
 ALTER TABLE `servico`
-  ADD CONSTRAINT `tipo` FOREIGN KEY (`tipo`) REFERENCES `tipser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tipo` FOREIGN KEY (`tipo`) REFERENCES `tipser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `usuariocadastrouservico` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
+
+--
+-- Limitadores para a tabela `tipser`
+--
+ALTER TABLE `tipser`
+  ADD CONSTRAINT `usuariocadastroutipo` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
+
+--
+-- Limitadores para a tabela `valser`
+--
+ALTER TABLE `valser`
+  ADD CONSTRAINT `usuariocadastrouvalor` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
