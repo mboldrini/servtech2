@@ -11,7 +11,7 @@ class Painel extends CI_Controller {
 		#pegar as infos dos usuarios
 		$this->load->model('usuario');
 
-	//	$this->load->model('funcoes');
+		$this->load->model('funcoes');
 
 	}
 	
@@ -28,12 +28,15 @@ class Painel extends CI_Controller {
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
+		$avisoAtivo = array("ativo"=>'1');
+
 		$dados = array(
-			'pasta'=> 'base',
-			'tela' => 'content',
-			'titulo' => 'Painel Administrativo',
+			'pasta'		=> 'base',
+			'tela' 		=> 'content',
+			'titulo' 	=> 'Painel Administrativo',
 			'descricao' => ' - Painel Geral do Sistema',
-			'infos' => $pegaInfos,
+			'infos' 	=> $pegaInfos,
+			'mensagens'	=> $this->funcoes->getWhere($avisoAtivo, 'aviso'),
 		);
 
 		$this->load->view('tela',$dados);

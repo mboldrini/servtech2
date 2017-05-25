@@ -61,4 +61,15 @@ class Funcoes extends CI_Model {
 	}// funcao do_delete
 
 
+	public function getWhere( $coluna, $tabela ){
+		
+		$this->db->select("*");
+   		$this->db->from( $tabela );
+    	$this->db->where( $coluna );
+   		$query = $this->db->get();        
+   		return $query->result();
+		
+	}
+
+
 }
