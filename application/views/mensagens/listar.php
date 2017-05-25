@@ -1,5 +1,3 @@
-<?php if( isset($mensagens) && $mensagens != NULL ){ ?>
-	
 <div class="row">
 	<div class="col-md-2 pull-right">
 		<a class="btn btn-primary pull-right" href="<?= base_url() ?>mensagens/novo" role="button">
@@ -7,6 +5,9 @@
     	</a>
 	</div><!-- md-2 pull-right-->
 </div><!--row-->
+<br>
+<?php if( isset($mensagens) && $mensagens != NULL ){ ?>
+	
 
 
 	
