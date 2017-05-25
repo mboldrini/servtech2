@@ -10,6 +10,7 @@
         <li><a href="<?= base_url(); ?>painel"><i class="fa fa-dashboard"></i> <span>Painel</span></a></li>
         
         <li class="header">Administrativo</li>
+        <li><a href="<?= base_url(); ?>mensagens"><i class="fa fa-comment"></i> <span>Mensagens</span></a></li>
         <li><a href="<?= base_url(); ?>perfil"><i class="fa fa-user"></i> <span>Perfil</span></a></li>
         <li><a href="<?= base_url(); ?>contas"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
 
