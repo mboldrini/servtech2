@@ -188,7 +188,7 @@ class Mensagens extends CI_Controller {
 
 		$this->load->view('tela',$dados);
 
-	}//index
+	}
 
 
 

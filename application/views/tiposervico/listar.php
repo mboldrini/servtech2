@@ -40,7 +40,7 @@
         				<?php } ?>
         			</td>
         			<td>
-        				<?php if( $servico->perDes == 0 ){ ?>
+        				<?php if( $servico->perAcr == 0 ){ ?>
 							<span class="label label-danger">Não</span>
         				<?php }else{ ?>
 							<span class="label label-primary">Sim</span>
