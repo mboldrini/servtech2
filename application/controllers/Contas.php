@@ -92,7 +92,6 @@ class Contas extends CI_Controller {
 
 			$this->funcoes->update($registra, 'users', $idUsuario );
 
-
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um usuário!';
 			$mensagem[1] = 'alert-success';
 
@@ -132,9 +131,12 @@ class Contas extends CI_Controller {
 		$this->form_validation->set_rules('email', 			'Email', 		'trim|required');
 		$this->form_validation->set_rules('telefone', 		'Telefone',		'trim');
 		$this->form_validation->set_rules('descricao', 		'Descrição', 	'trim');
+		$this->form_validation->set_rules('password', 		'senha', 		'trim|required');
+
 
 		$id 		= $this->input->post('id');
 		$username	= $this->input->post('username');
+		$senha 		= sha1( $this->input->post('password') );
 		$nome 		= $this->input->post('nome');
 		$sobrenome 	= $this->input->post('sobrenome');
 		$email 		= $this->input->post('email');
@@ -154,6 +156,7 @@ class Contas extends CI_Controller {
 			$registra = array(
 				"perfil"	=> $perfil,
 				"username"	=> $username,
+				"password"	=> $senha,
 				"nome" 		=> $nome,
 				"sobrenome" => $sobrenome,
 				"email" 	=> $email,

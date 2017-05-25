@@ -28,6 +28,19 @@
   </div>
 
   <div class="form-group">
+    <label for="exampleInputEmail1">Senha:</label>
+    <?php echo form_input(
+      'password', 
+      '',
+      array( 'class'    =>  'form-control col-md-3',
+             'required'   =>  'required',
+             'placeholder'  =>  'Senha',
+            ) 
+        ); 
+    ?>
+  </div>
+
+  <div class="form-group">
     <label for="exampleInputEmail1">Perfil:</label>
     <?php echo form_input(
       'perfil', 
