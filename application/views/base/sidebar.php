@@ -12,6 +12,7 @@
 
         <li class="header">Front Office</li>
         <li><a href="<?= base_url(); ?>cliente"><i class="fa fa-user"></i> <span>Clientes</span></a></li>
+        <li><a href="<?= base_url(); ?>servico"><i class="fa fa-gears"></i> <span>Serviços</span></a></li>
 
         <li class="header">Financeiro</li>
         <li><a href="<?= base_url(); ?>tiposervico"><i class="fa fa-book"></i> <span>Tipo de Serviço</span></a></li>
