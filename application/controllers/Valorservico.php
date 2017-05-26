@@ -85,7 +85,7 @@ class Valorservico extends CI_Controller {
 				"usuCad"	=> $usuCad,
 			);
 			$this->funcoes->insert($registra, 'valser' );
-			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um aviso/mensagem!';
+			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um valor de serviço!';
 			$mensagem[1] = 'alert-success';
 		}
 
@@ -103,6 +103,69 @@ class Valorservico extends CI_Controller {
 
 	}
 
+
+	public function editar()	{
+
+		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$idEditar = $this->uri->segment(3);
+
+		$mensagem = [];
+
+		$this->form_validation->set_rules('tipo', 		'Tipo de Serviço', 	'trim|required');
+		$this->form_validation->set_rules('valor', 		'Valor', 			'trim|required');
+		$this->form_validation->set_rules('inival', 	'Data de Início', 	'trim|required');
+		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim|required');
+
+		$tipo 		= $this->input->post('tipo');
+		$valor 		= $this->input->post('valor');
+		$iniVal 	= $this->input->post('inival');
+		$fimVal 	= $this->input->post('fimVal');
+		$id 		= $this->input->post('id');
+
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
+			$idMensagem = array(
+				"id"		=> $id
+			);
+			$registra = array(
+				"tipo" 		=> $tipo,
+				"valor"		=> $valor,
+				"iniVal"	=> $iniVal,
+				"fimVal"	=> $fimVal,
+			);
+			$this->funcoes->update($registra, 'valser', $idMensagem );
+			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um valor de serviço!';
+			$mensagem[1] = 'alert-success';
+		}
+
+
+		$dados = array(
+			'pasta'		=>	'valorservico',
+			'tela'		=>	'editar',
+			'titulo'	=>	'Editar Valores de Serviços',
+			'infos'		=>	$pegaInfos,
+			'editar'	=> 	$this->funcoes->getById($idEditar, 'valser'),
+			'tipoServico'=> $this->funcoes->getAll('tipser'),
+			'mensagem'	=> 	$mensagem,
+		);
+
+		$this->load->view('tela',$dados);
+
+	}
+	
 
 
 
