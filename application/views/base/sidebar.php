@@ -10,7 +10,8 @@
         <li class="header">Menu</li>
         <li><a href="<?= base_url(); ?>painel"><i class="fa fa-dashboard"></i> <span>Painel</span></a></li>
         <li><a href="<?= base_url(); ?>tiposervico"><i class="fa fa-book"></i> <span>Tipo de Serviço</span></a></li>
-
+        <li><a href="<?= base_url(); ?>valorservico"><i class="fa fa-usd"></i> <span>Valor do Serviço</span></a></li>
+        
         
         <li class="header">Administrativo</li>
         <li><a href="<?= base_url(); ?>mensagens"><i class="fa fa-comment"></i> <span>Mensagens</span></a></li>
