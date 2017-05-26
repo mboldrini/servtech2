@@ -22,6 +22,7 @@
 	           	<th>Data de Início</th>
 	           	<th>Data Final</th>
 	           	<th>Data de Cadastro</th>
+	           	<th>Usuário</th>
 	           	<th>Opções</th>
           	</tr>
         </thead>
@@ -43,6 +44,11 @@
         				<span class="label label-danger"><?php echo $valor->fimVal; ?></span>
         			</td>
         			<td><?php echo $valor->datCad; ?></td>
+        			<td>
+        				<?php foreach( $usuario as $user): ?>
+        					<?php if( $user->id == $valor->usuCad){ echo $user->nome; } ?>
+        				<?php endforeach; ?>
+        			</td>
         			<td>
         				<a class="btn btn-info" href="<?= base_url('valorservico/editar/' . $valor->id) ?>" role="button">
         					<i class="fa fa-pencil "></i>  Editar

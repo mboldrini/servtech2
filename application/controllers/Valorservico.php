@@ -35,6 +35,7 @@ class Valorservico extends CI_Controller {
 			'infos'		=>	$pegaInfos,
 			'valores'	=>  $this->funcoes->getAll('valser'),
 			'tipoServico'=> $this->funcoes->getAll('tipser'),
+			'usuario'=> $this->funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
