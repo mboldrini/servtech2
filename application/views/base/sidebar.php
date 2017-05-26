@@ -9,16 +9,19 @@
 
         <li class="header">Menu</li>
         <li><a href="<?= base_url(); ?>painel"><i class="fa fa-dashboard"></i> <span>Painel</span></a></li>
+
+        <li class="header">Front Office</li>
+        <li><a href="<?= base_url(); ?>cliente"><i class="fa fa-user"></i> <span>Clientes</span></a></li>
+
+        <li class="header">Financeiro</li>
         <li><a href="<?= base_url(); ?>tiposervico"><i class="fa fa-book"></i> <span>Tipo de Serviço</span></a></li>
         <li><a href="<?= base_url(); ?>valorservico"><i class="fa fa-usd"></i> <span>Valor do Serviço</span></a></li>
         
-        
         <li class="header">Administrativo</li>
-        <li><a href="<?= base_url(); ?>mensagens"><i class="fa fa-comment"></i> <span>Mensagens</span></a></li>
-        <li><a href="<?= base_url(); ?>perfil"><i class="fa fa-user"></i> <span>Perfil</span></a></li>
+        <li><a href="<?= base_url(); ?>mensagens"><i class="fa fa-comment"></i> <span>Mensagens/Avisos</span></a></li>
         <li><a href="<?= base_url(); ?>contas"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-
-
+        <li><a href="<?= base_url(); ?>perfil"><i class="fa fa-user"></i> <span>Meu Perfil</span></a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
