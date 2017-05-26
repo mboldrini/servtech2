@@ -17,6 +17,7 @@
         	else if( $paginaAtual == 'mensagens')	{ $pgMensagens 		= "active"; }
         	else if( $paginaAtual == 'contas')		{ $pgContas 		= "active"; }
         	else if( $paginaAtual == 'perfil')		{ $pgPerfil 		= "active"; }
+            else{    $pgPainel    =  "active";      }
         ?>
 
         <li class="header">Menu</li>
