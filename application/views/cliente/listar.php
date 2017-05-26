@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-2 pull-right">
-		<a class="btn btn-primary pull-right" href="<?= base_url() ?>mensagens/novo" role="button">
+		<a class="btn btn-primary pull-right" href="<?= base_url() ?>cliente/novo" role="button">
         	<i class="fa fa-plus-square "> </i>  Cadastrar Cliente
     	</a>
 	</div><!-- md-2 pull-right-->
