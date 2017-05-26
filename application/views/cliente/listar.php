@@ -23,6 +23,7 @@
 	           	<th>Celular</th>
 	           	<th>Telefone</th>
 	           	<th>Email</th>
+	           	<td>Cadastrar Serviço</td>
 	           	<th>Opções</th>
           </tr>
         </thead>
@@ -56,9 +57,14 @@
 						<?php echo $cliente->email; ?> 
 					</td>
 					<td>
+						<a class="btn btn-primary" href="<?= base_url('servico/novo/' . $cliente->id) ?>" role="button">
+            				<i class="fa fa-gears "></i>  Novo Serviço
+            			</a>
+					</td>
+					<td>
 						<a class="btn btn-info" href="<?= base_url('cliente/editar/' . $cliente->id) ?>" role="button">
-            					<i class="fa fa-pencil "></i>  Editar
-            				</a>
+            				<i class="fa fa-pencil "></i>  Editar
+            			</a>
                     	<a class="btn btn-danger" href="<?= base_url('cliente/excluir/' . $cliente->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
 					</td>
 				</tr>
