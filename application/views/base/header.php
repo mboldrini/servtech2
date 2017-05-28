@@ -19,8 +19,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <script src="<?= base_url(); ?>/assets/plugins/datatables/jquery.dataTables.js"></script>
   <script src="<?= base_url(); ?>/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
-
+  
   <script src="<?= base_url(); ?>/assets/script.js"></script>
+  
 
 </head>
 <!--

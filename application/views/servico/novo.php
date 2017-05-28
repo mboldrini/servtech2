@@ -8,18 +8,34 @@
   }
 ?>
 
-<div class="col-md-4">
+<div class="col-md-6">
 
 	<?php echo form_open(); ?>
 
-	<div class="form-group">
-    	<label for="exampleInputName2">ID do Cliente:</label>
-    	<input type="text" class="form-control" id="codCli" name="codCli" placeholder="ID" value="<?php echo $cliente->id; ?>" readonly>
-  	</div>
-  	<div class="form-group">
-    	<label for="exampleInputEmail2">Nome:</label>
-    	<input type="text" class="form-control" id="nomeCliente" placeholder="nome" value="<?php echo $cliente->nome;?>" readonly>
-  	</div>
+	<div class="">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Informações do Cliente</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body">
+				<div class="form-group">
+    				<label for="exampleInputName2">ID do Cliente:</label>
+    				<input type="text" class="form-control" id="codCli" name="codCli" placeholder="ID" value="<?php echo $cliente->id; ?>" readonly>
+  				</div>
+				<div class="form-group">
+    				<label for="exampleInputEmail2">Nome:</label>
+    				<input type="text" class="form-control" id="nomeCliente" placeholder="nome" value="<?php echo $cliente->nome;?>" readonly>
+  				</div>
+            </div>
+        </div>
+    </div>
+
+	
+  	
 
 	<div class="form-group">
 		<label for="exampleInputEmail1">Tipo de Serviço:</label>
@@ -155,7 +171,8 @@
 	<div class="form-group">
     	<?php echo form_label('Data de Cadastro:', 'date'); ?>
     	<?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    	<?php echo form_input('datCad', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
+    	<?php echo form_input('datCad', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly', 'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'',  ) ); ?>
   	</div>
 
 	<div class="form-group">

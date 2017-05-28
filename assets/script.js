@@ -1,24 +1,32 @@
 $(document).ready(function(){
 
   $(function () {
+    $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": true,
-      "searching": true,
+      "lengthChange": false,
+      "searching": false,
       "ordering": true,
       "info": true,
-      "autoWidth": true
+      "autoWidth": false
     });
   });
 
 
-//Datemask dd/mm/yyyy
+ $(function () {
+  
+
+    //Datemask dd/mm/yyyy
     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
     //Money Euro
     $("[data-mask]").inputmask();
 
     //Date range picker
     $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
     //Date range as a button
     $('#daterange-btn').daterangepicker(
         {
@@ -40,6 +48,8 @@ $(document).ready(function(){
 
 
 
+
+  });
 
 
 

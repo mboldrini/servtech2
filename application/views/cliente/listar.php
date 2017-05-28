@@ -75,28 +75,29 @@
 </div> -->
 
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Clientes Cadastrados</h3>
-    </div>
-          
-    <div class="box-body">
-        <table id="example2" class="table table-bordered table-striped">
-            <thead>
-		        <tr>
-		      		<th>ID</th>
-		           	<th>Nome</th>
-		           	<th>Tipo</th>
-		           	<th>CPF/CNPJ</th>
-		           	<th>Celular</th>
-		           	<th>Email</th>
-		           	<td>Cadastrar Serviço</td>
-		           	<th>Opções</th>
-		        </tr>
-            </thead>
-            
-            <tbody>
-                <?php foreach( $clientes as $cliente ): ?>
+
+
+       <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+	           	<th>Nome</th>
+	           	<th>Tipo</th>
+	           	<th>Celular</th>
+	           	<td>Telefone</td>
+	           	<th>Email</th>
+	           	<td>Cadastrar Serviço</td>
+	           	<th>Opções</th>
+                </tr>
+                </thead>
+                <tbody>
+	       	<?php foreach( $clientes as $cliente ): ?>
 				<tr>
 					<td>
 						<?php echo $cliente->id; ?>
@@ -106,16 +107,16 @@
 					</td>
 					<td>
 						<?php if( $cliente->tipo == 'F' || $cliente->tipo == 'f' ){ ?>
-							<?php echo "P. Física"; ?>
+							<?php echo "<span class=\"label label-success\">P. Física</span>"; ?>
 						<?php }else{ ?>
-							<?php echo "P. Jurídica"; ?>
+							<?php echo "<span class=\"label label-default\">P. Jurídica</span>"; ?>
 						<?php } ?>
 					</td>
 					<td>
-						<?php echo $cliente->registro; ?>
+						<?php echo $cliente->celular; ?>
 					</td>
 					<td>
-						<?php echo $cliente->celular; ?>
+						<?php echo $cliente->telefone; ?>
 					</td>
 					<td>
 						<?php echo $cliente->email; ?> 
@@ -127,16 +128,19 @@
 					</td>
 					<td>
 						<a class="btn btn-info" href="<?= base_url('cliente/editar/' . $cliente->id) ?>" role="button">
-            				<i class="fa fa-pencil "></i>  
+            				<i class="fa fa-pencil "></i>  Editar
             			</a>
-                    	<a class="btn btn-danger" href="<?= base_url('cliente/excluir/' . $cliente->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  </a>
+                    	<a class="btn btn-danger" href="<?= base_url('cliente/excluir/' . $cliente->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
 					</td>
 				</tr>
-				<?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
+			<?php endforeach; ?>
+        </tbody>
+             
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
 
 
 <?php }else{ ?>
