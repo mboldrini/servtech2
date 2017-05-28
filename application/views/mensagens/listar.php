@@ -72,7 +72,6 @@
 </div>
 
 
-
 <?php }else{ ?>
 	
 	<div class="alert alert-warning alert-dismissible" role="alert">
