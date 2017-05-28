@@ -44,6 +44,8 @@
       array( 'class'    	=>  'form-control col-md-3',
              'required'   	=>  'required',
              'placeholder'  =>  'Data de Início',
+             'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'',
             ) 
         ); 
     ?>
@@ -57,6 +59,8 @@
       array( 'class'    	=>  'form-control col-md-3',
              'required'   	=>  'required',
              'placeholder'  =>  'Data Final',
+              'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'',
             ) 
         ); 
     ?>

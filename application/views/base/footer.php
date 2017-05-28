@@ -13,7 +13,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Versão 2.0.1 ~ Beta
+      Versão 2.0.2 ~ Beta
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2017 <a href="#">Mutatu Software House</a>.</strong> All rights reserved.
@@ -33,6 +33,11 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url(); ?>/assets/dist/js/app.min.js"></script>
 
+
+<!-- InputMask -->
+<script src="<?= base_url(); ?>/assets/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?= base_url(); ?>/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?= base_url(); ?>/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
