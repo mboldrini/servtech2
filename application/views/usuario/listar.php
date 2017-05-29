@@ -13,54 +13,6 @@
 
 <?php if( isset( $contas) && $contas != NULL ){ ?>
 	
-<!-- <div class="table-responsive">
-    <table class="table table-striped">
-        
-        <thead>
-    		  <tr>
-           	<th>ID</th>
-           	<th>Login</th>
-           	<th>Nome</th>
-           	<th>Telefone</th>
-           	<th>Email</th>
-           	<th>Descrição/Cargo</th>
-           	<th>Opções</th>
-          </tr>
-        </thead>
-
-        <tbody>
-            <?php foreach ( $contas as $usuario ): ?>
-            	<tr>
-            		<td><?php echo $usuario->id; ?></td>
-            		<td>
-						<span class="label label-warning">
-							<?php echo $usuario->username; ?>
-						</span>
-            		</td>
-            		<td><?php echo $usuario->nome; ?> <?php echo $usuario->sobrenome; ?></td>
-            		<td><?php echo $usuario->telefone; ?></td>
-            		<td><?php echo $usuario->email; ?></td>
-            		<td><?php echo $usuario->descricao; ?></td>
-            		<?php if( $usuario->id == $infos[0]->id ){ ?>
-						<td>
-							<a class="btn btn-primary" href="<?= base_url() ?>perfil" role="button">
-            					<i class="fa fa-pencil "></i>  Perfil
-            				</a>
-						</td>
-            		<?php }else{ ?>
-						<td>
-            				<a class="btn btn-info" href="<?= base_url('contas/editar/' . $usuario->id) ?>" role="button">
-            					<i class="fa fa-pencil "></i>  Editar
-            				</a>
-                    <a class="btn btn-danger" href="<?= base_url('contas/excluir/' . $usuario->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
-            			</td>
-            		<?php } ?>
-            	</tr>
-           	<?php endforeach; ?>
-        </tbody>
-    </table>
-</div> -->
-
 <div class="box">
     <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -72,6 +24,7 @@
                   <th>Telefone</th>
                   <th>Email</th>
                   <th>Descrição/Cargo</th>
+                  <th>Editar Senha</th>
                   <th>Opções</th>
                 </tr>
             </thead>
@@ -80,7 +33,7 @@
               <tr>
                 <td><?php echo $usuario->id; ?></td>
                 <td>
-            <span class="label label-warning">
+            <span class="label label-primary">
               <?php echo $usuario->username; ?>
             </span>
                 </td>
@@ -88,14 +41,25 @@
                 <td><?php echo $usuario->telefone; ?></td>
                 <td><?php echo $usuario->email; ?></td>
                 <td><?php echo $usuario->descricao; ?></td>
+                <td>
+                  <?php if( $usuario->id == $infos[0]->id ){ ?>
+                    <a class="btn btn-warning btn-sm disabled" href="<?= base_url('contas/editarsenha/' . $usuario->id) ?>" role="button">
+                      <i class="fa fa-key "></i>  Editar Senha
+                    </a>
+                  <?php }else{ ?>
+                    <a class="btn btn-warning btn-sm bg-purple" href="<?= base_url('contas/editarsenha/' . $usuario->id) ?>" role="button">
+                      <i class="fa fa-key "></i>  Editar Senha
+                    </a>
+                  <?php } ?>
+                </td>
                 <?php if( $usuario->id == $infos[0]->id ){ ?>
-            <td>
-              <a class="btn btn-primary" href="<?= base_url() ?>perfil" role="button">
+                  <td>
+                    <a class="btn btn-primary" href="<?= base_url() ?>perfil" role="button">
                       <i class="fa fa-pencil "></i>  Perfil
                     </a>
-            </td>
+                  </td>
                 <?php }else{ ?>
-            <td>
+                  <td>
                     <a class="btn btn-info" href="<?= base_url('contas/editar/' . $usuario->id) ?>" role="button">
                       <i class="fa fa-pencil "></i>  Editar
                     </a>

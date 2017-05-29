@@ -5,7 +5,7 @@
 <?php echo form_open(); ?>
 
 <?php 
-  if( $mensagem ){
+  if( isset($mensagem) && $mensagem != NULL ){
     echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   '.$mensagem[0].'</div>';
