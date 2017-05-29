@@ -10,58 +10,55 @@
 
 <?php if( isset($valores) && $valores != NULL ){ ?>
 
-
-<div class="table-responsive">
-    <table class="table table-striped">
-        
-        <thead>
-    		<tr>
-	           	<th>ID</th>
-	           	<th>Tipo</th>
-	           	<th>Valor (R$)</th>
-	           	<th>Data de Início</th>
-	           	<th>Data Final</th>
-	           	<th>Data de Cadastro</th>
-	           	<th>Usuário</th>
-	           	<th>Opções</th>
-          	</tr>
-        </thead>
-
+<div class="box">
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Valor (R$)</th>
+                    <th>Data de Início</th>
+                    <th>Data Final</th>
+                    <th>Data de Cadastro</th>
+                    <th>Usuário</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
         <tbody>
-        	<?php foreach( $valores as $valor ): ?>
-        		<tr>
-        			<td><?php echo $valor->id; ?></td>
-        			<td>
-        				<?php foreach( $tipoServico as $tipo ): ?>
-        					<?php if( $tipo->id == $valor->tipo){ echo $tipo->tipo; } ?>
-        				<?php endforeach; ?>
-        			</td>
-        			<td><i class="fa fa-usd"></i>  <?php echo $valor->valor; ?></td>
-        			<td>
-        				<span class="label label-primary"><?php echo $valor->iniVal; ?></span>
-        			</td>
-        			<td>
-        				<span class="label label-danger"><?php echo $valor->fimVal; ?></span>
-        			</td>
-        			<td><?php echo $valor->datCad; ?></td>
-        			<td>
-        				<?php foreach( $usuario as $user): ?>
-        					<?php if( $user->id == $valor->usuCad){ echo $user->nome; } ?>
-        				<?php endforeach; ?>
-        			</td>
-        			<td>
-        				<a class="btn btn-info" href="<?= base_url('valorservico/editar/' . $valor->id) ?>" role="button">
-        					<i class="fa fa-pencil "></i>  Editar
-        				</a>
-                		<a class="btn btn-danger" href="<?= base_url('valorservico/excluir/' . $valor->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
-        			</td>
-        		</tr>
-        	<?php endforeach; ?>
-        </tbody>
-    </table>
+            <?php foreach( $valores as $valor ): ?>
+                <tr>
+                    <td><?php echo $valor->id; ?></td>
+                    <td>
+                        <?php foreach( $tipoServico as $tipo ): ?>
+                            <?php if( $tipo->id == $valor->tipo){ echo $tipo->tipo; } ?>
+                        <?php endforeach; ?>
+                    </td>
+                    <td><i class="fa fa-usd"></i>  <?php echo $valor->valor; ?></td>
+                    <td>
+                        <span class="label label-primary"><?php echo $valor->iniVal; ?></span>
+                    </td>
+                    <td>
+                        <span class="label label-danger"><?php echo $valor->fimVal; ?></span>
+                    </td>
+                    <td><?php echo $valor->datCad; ?></td>
+                    <td>
+                        <?php foreach( $usuario as $user): ?>
+                            <?php if( $user->id == $valor->usuCad){ echo $user->nome; } ?>
+                        <?php endforeach; ?>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="<?= base_url('valorservico/editar/' . $valor->id) ?>" role="button">
+                            <i class="fa fa-pencil "></i>  Editar
+                        </a>
+                        <a class="btn btn-danger" href="<?= base_url('valorservico/excluir/' . $valor->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>             
+        </table>
+    </div>
 </div>
-
-
 
 
 <?php }else{ ?>
