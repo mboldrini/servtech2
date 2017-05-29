@@ -13,11 +13,15 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Versão 2.0.3 ~ Beta
+      Versão 2.1.3 ~ Beta
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2017 <a href="#">Mutatu Software House</a>.</strong> All rights reserved.
   </footer>
+
+<!-- 
+  2.1.3 = .1. -> inclusão da funcao de edicao de servico
+ -->
 
 </div>
 <!-- ./wrapper -->

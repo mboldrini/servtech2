@@ -12,20 +12,47 @@
 
 	<?php echo form_open(); ?>
 
-	<!-- <div class="form-group">
-    	<label for="exampleInputName2">ID do Cliente:</label>
-    	<input type="text" class="form-control" id="codCli" name="codCli" placeholder="ID" value="<?php echo $cliente->id; ?>" readonly>
-  	</div>
-  	<div class="form-group">
-    	<label for="exampleInputEmail2">Nome:</label>
-    	<input type="text" class="form-control" id="nomeCliente" placeholder="nome" value="<?php echo $cliente->nome;?>" readonly>
-  	</div> -->
+  	<div class="">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Informações do Cliente</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body">
+				<div class="form-group">
+    				<label for="exampleInputName2">ID do Cliente:</label>
+    				<input type="text" class="form-control" id="codCli" name="codCli" placeholder="ID" value="<?php echo $editar->codCli; ?>" readonly>
+  				</div>
+				<div class="form-group">
+    				<label for="exampleInputEmail2">Nome:</label>
+    				<?php foreach( $clientes as $cliente ): ?>
+    					<?php if( $cliente->id == $editar->codCli ){ ?>
+    						<input type="text" class="form-control" id="nomeCliente" placeholder="nome" value="<?php echo $cliente->nome;?>" readonly>
+    					<?php } ?>
+    				<?php endforeach; ?>
+  				</div>
+            </div>
+        </div>
+    </div>
 
+    <div class="form-group">
+    	<label for="exampleInputName2">ID do Serviço:</label>
+    	<input type="text" class="form-control" id="idSer" name="idSer" placeholder="ID" value="<?php echo $editar->id; ?>" readonly>
+  	</div>
+
+  
 	<div class="form-group">
 		<label for="exampleInputEmail1">Tipo de Serviço:</label>
 		<select name="tipo" id="tipo" class="form-control">
 			<?php foreach( $tiposervico as $tipo ): ?>
-				<option value="<?php echo $tipo->id; ?>"><?php echo $tipo->tipo; ?></option>
+				<?php if( $tipo->id == $editar->tipo ){ ?>
+					<option value="<?php echo $tipo->id ?>" selected><?php echo $tipo->tipo; ?></option>
+				<?php }else{ ?>
+					<option value="<?php echo $tipo->id ?>"><?php echo $tipo->tipo; ?></option>
+				<?php } ?>
 			<?php endforeach; ?>
 		</select>
 	</div>
@@ -63,21 +90,34 @@
 	      array( 'class'    =>  'form-control col-md-3',
 	             'required'   =>  'required',
 	             'placeholder'  =>  'Previsão de Conclusão',
+	             'data-mask' => 'data-mask',
+             	'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'', 
 	            ) 
 	        ); 
 	    ?>
 	</div>
 
-	<!-- <div class="form-group">
-		<label for="exampleInputEmail1">Status:</label>
+	<div class="form-group">
+		<label for="Status">Status:</label>
+		<?php 
+		$cores = array(
+			"Em Aberto"		=>	"1", 
+			"Executando"	=>	"2",
+			"Em Espera"		=>	"3",
+			"Concluído"		=>	"4",
+			"Cancelado"		=>	"5",
+		);
+		?>	
 		<select name="status" id="status" class="form-control">
-			<option value="1">Em Aberto</option>
-			<option value="2">Executando</option>
-			<option value="3">Em Espera</option>
-			<option value="4">Concluído</option>
-			<option value="5">Cancelado</option>
+			<?php foreach( $cores as $key => $cor ): ?>
+				<?php if( $editar->status == $cor ){ ?>
+					<option value="<?php echo $cor; ?>" selected><?php echo $key; ?></option>
+				<?php }else{ ?>
+					<option value="<?php echo $cor; ?>"><?php echo $key; ?></option>
+				<?php } ?>
+			<?php endforeach; ?>
 		</select>
-	</div> -->
+	</div>
 
 	<div class="form-group">
 	    <label for="exampleInputEmail1">Solução:</label>
@@ -107,9 +147,11 @@
 	    <label for="exampleInputEmail1">Data de Conclusão:</label>
 	    <?php echo form_input(
 	      'datCon', 
-	      '',
+	      $editar->datCon,
 	      array( 'class'    =>  'form-control col-md-3',
 	             'placeholder'  =>  'Data de Conclusão',
+	             'data-mask' => 'data-mask',
+             	'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'', 
 	            ) 
 	        ); 
 	    ?>
@@ -119,7 +161,7 @@
 		<label for="exampleInputEmail1">Técnico Responsável:</label>
 		<select name="tecRes" id="tecRes" class="form-control">
 			<?php foreach( $usuarios as $usuario ): ?>
-				<?php if( $usuario->id == $infos[0]->id ){ ?>
+				<?php if( $usuario->id == $editar->tecRes ){ ?>
 					<option value="<?php echo $usuario->id; ?>" selected><?php echo $usuario->nome ?></option>
 				<?php }else{ ?>
 					<option value="<?php echo $usuario->id; ?>"><?php echo $usuario->nome; ?></option>
@@ -132,7 +174,7 @@
 	    <label for="exampleInputEmail1">Acréscimo de Valor:</label>
 	    <?php echo form_input(
 	      'acrescimo', 
-	      '',
+	      $editar->acrescimo,
 	      array( 'class'    =>  'form-control col-md-3',
 	             'placeholder'  =>  'Acrescimo',
 	            ) 
@@ -144,7 +186,7 @@
 	    <label for="exampleInputEmail1">Desconto de Valor:</label>
 	    <?php echo form_input(
 	      'desconto', 
-	      '',
+	      $editar->desconto,
 	      array( 'class'    =>  'form-control col-md-3',
 	             'placeholder'  =>  'Desconto',
 	            ) 
@@ -154,18 +196,22 @@
 
 	<div class="form-group">
     	<?php echo form_label('Data de Cadastro:', 'date'); ?>
-    	<?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    	<?php echo form_input('datCad', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
+    	<?php echo form_input('datCad', $editar->datCad ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly',  'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'',  ) ); ?>
   	</div>
 
 	<div class="form-group">
     	<label for="exampleInputEmail1">Autor:</label>
     	<select name="usuCad" id="usuCad" class="form-control" readonly>
-			<option value="<?php echo $infos[0]->id; ?>"><?php echo $infos[0]->nome; ?></option>
+    		<?php foreach( $usuarios as $usuCad ): ?>
+				<?php if( $usuCad->id == $editar->tecRes ){ ?>
+					<option value="<?php echo $usuario->id; ?>" selected><?php echo $usuario->nome ?></option>
+				<?php }?>
+			<?php endforeach; ?>
     	</select>
   	</div>
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary">Editar</button>
 
 <?php form_close(); ?>
 

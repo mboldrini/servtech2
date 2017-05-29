@@ -12,3 +12,5 @@ Esse sistema é um pedido do BrenoAlves, p/ agilizar o controle de clientes/serv
 2.0.1 - Atualização da exibição de clientes cadastrados, agora mais funcional, com paginação, pesquisa, etc.  
 
 2.0.2 - Atualizacao dos campos de data em todos os formularios  
+
+2.1.3 = .1. -> inclusão da funcao de edicao de servico

@@ -129,8 +129,50 @@ class Servico extends CI_Controller {
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
-		$idEditar = $this->uri->segment(3);
 		$mensagem = [];
+		$idEditar = $this->uri->segment(3);	
+
+		$this->form_validation->set_rules('idSer',		'ID do Serviço',		'trim|required');
+		$this->form_validation->set_rules('codCli',		'Código Cliente',		'trim|required');
+		$this->form_validation->set_rules('tipo',		'titulo',				'trim|required');
+		$this->form_validation->set_rules('solicitado',	'solicitado',			'trim|required');
+		$this->form_validation->set_rules('detectado',	'detectado',			'trim');
+		$this->form_validation->set_rules('preCon',		'previsao',				'trim|required');
+		$this->form_validation->set_rules('status',		'status',				'trim|required');
+		$this->form_validation->set_rules('solucao',	'solucao',				'trim');
+		$this->form_validation->set_rules('observacao',	'observacao',			'trim');
+		$this->form_validation->set_rules('datCon',		'data de conclusão',	'trim');
+		$this->form_validation->set_rules('tecRes',		'Técnico Responsável',	'trim');
+		$this->form_validation->set_rules('acrescimo',	'acrescimo',			'trim');
+		$this->form_validation->set_rules('desconto',	'desconto',				'trim');
+
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
+			$idTipSer = array(
+				"id"		=> $this->input->post('idSer'),
+			);
+			$registra = array(
+				"codCli"		=> $this->input->post('codCli'),
+				"tipo"			=> $this->input->post('tipo'),
+				"solicitado"	=> $this->input->post('solicitado'),
+				"detectado"		=> $this->input->post('detectado'),
+				"preCon"		=> $this->input->post('preCon'),
+				"status"		=> $this->input->post('status'),
+				"solucao"		=> $this->input->post('solucao'),
+				"observacao"	=> $this->input->post('observacao'),
+				"datCon"		=> $this->input->post('datCon'),
+				"tecRes"		=> $this->input->post('tecRes'),
+				"acrescimo"		=> $this->input->post('acrescimo'),
+				"desconto"		=> $this->input->post('desconto'),
+			);
+			$this->funcoes->update($registra, 'servico', $idTipSer );
+			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um servico!';
+			$mensagem[1] = 'alert-success';
+		}	
 
 		$dados = array(
 			'pasta'		=>	'servico',
@@ -139,7 +181,7 @@ class Servico extends CI_Controller {
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=> 	$mensagem,
 			'editar'	=> 	$this->funcoes->getById($idEditar, 'servico'),
-			'cliente'	=>  $this->funcoes->getById($idCliente, 'cliente'),
+			'clientes'	=>  $this->funcoes->getAll('cliente'),
 			'tiposervico'=> $this->funcoes->getAll('tipser'),
 			'usuarios'	=>	$this->funcoes->getAll('users'),
 		);
