@@ -25,4 +25,78 @@
 <?php } ?>
 
 
+<div class="row">
+       
+    <?php if( isset($clientes) && $clientes >= 1){ ?>
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo $clientes; ?></h3>
+                    <p>Clientes Cadastrados</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php if( isset($tiposervico) && $tiposervico >= 1){ ?>
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo $tiposervico; ?></h3>
+                    <p>Tipos de Serviços</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-book"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php if( isset($servicos) && $servicos >= 1){ ?>
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo $servicos; ?></h3>
+                    <p>Serviços Cadastrados</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-gears"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  Ver +<i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+
+    <?php if( isset($usuarios) && $usuarios >= 1){ ?>
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3><?php echo $usuarios; ?></h3>
+                    <p>Usuários Cadastrados</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-user"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+
+</div>
+
+
+
 </div></div><!--geralzao da porra toda-->

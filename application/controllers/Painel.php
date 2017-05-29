@@ -37,6 +37,10 @@ class Painel extends CI_Controller {
 			'descricao' => ' - Painel Geral do Sistema',
 			'infos' 	=> $pegaInfos,
 			'mensagens'	=> $this->funcoes->getWhere($avisoAtivo, 'aviso'),
+			'clientes' =>  $this->funcoes->countAll('cliente'),
+			'tiposervico'=> $this->funcoes->countAll('tipser'),
+			'servicos'=> $this->funcoes->countAll('servico'),
+			'usuarios'=> $this->funcoes->countAll('users'),
 		);
 
 		$this->load->view('tela',$dados);

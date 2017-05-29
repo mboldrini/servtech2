@@ -71,5 +71,14 @@ class Funcoes extends CI_Model {
 		
 	}
 
+	public function countAll( $tabela ){
+		
+		$this->db->select("*");
+   		$this->db->from( $tabela );
+   		$query = $this->db->get();        
+   		return $query->num_rows();
+		
+	}
+
 
 }

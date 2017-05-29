@@ -13,7 +13,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Versão 2.3.3 ~ Beta
+      Versão 2.4.3 ~ Beta
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2017 <a href="#">Mutatu Software House</a>.</strong> All rights reserved.
@@ -23,6 +23,7 @@
   2.1.3 = .1. -> inclusão da funcao de edicao de servico
   2.2.3 = .2. -> inclusao da funcao de exclusao de servico
   2.3.3 = .3. -> inclusao da funcao de edicao de senha de usuario
+  2.4.3 = .4. -> inclusao de contagem de algumas tabelas no painel principal
  -->
 
 </div>
