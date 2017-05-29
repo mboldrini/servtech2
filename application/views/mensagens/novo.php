@@ -45,10 +45,10 @@
     	<label for="exampleInputEmail1">Tipo:</label>
 		<?php 
 			$cores = array(
-				"Sucesso"		=>	"alert-success", 
-				"Informação"	=>	"alert-info",
-				"Aviso"			=>	"alert-warning",
-				"Atenção"		=>	"alert-danger",
+				"Sucesso"		=>	"callout-success", 
+				"Informação"	=>	"callout-info",
+				"Aviso"			=>	"callout-warning",
+				"Atenção"		=>	"callout-danger",
 			);
 		?>	
 		<select name="cor" id="cor" class="form-control">
