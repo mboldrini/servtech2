@@ -57,7 +57,6 @@
       'fimVal', 
       '',
       array( 'class'    	=>  'form-control col-md-3',
-             'required'   	=>  'required',
              'placeholder'  =>  'Data Final',
              'data-mask' => 'data-mask',
              'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'', 

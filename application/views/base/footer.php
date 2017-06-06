@@ -13,7 +13,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Versão 2.4.3 ~ Beta
+      Versão 2.4.4 ~ Beta
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2017 <a href="#">Mutatu Software House</a>.</strong> All rights reserved.

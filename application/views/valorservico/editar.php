@@ -73,7 +73,6 @@
 	      'fimVal', 
 	      $editar->fimVal,
 	      array( 'class'    	=>  'form-control col-md-3',
-	             'required'   	=>  'required',
 	             'placeholder'  =>  'Data Final',
 	            ) 
 	        ); 

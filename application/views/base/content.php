@@ -37,8 +37,8 @@
                 <div class="icon">
                   <i class="fa fa-users"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                <a href="<?= base_url(); ?>cliente" class="small-box-footer">
+                  Ver <i class="fa fa-plus"></i>
                 </a>
             </div>
         </div>
@@ -54,8 +54,8 @@
                 <div class="icon">
                   <i class="fa fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                <a href="<?= base_url(); ?>tiposervico" class="small-box-footer">
+                  Ver <i class="fa fa-plus"></i>
                 </a>
             </div>
         </div>
@@ -71,8 +71,8 @@
                 <div class="icon">
                   <i class="fa fa-gears"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  Ver +<i class="fa fa-arrow-circle-right"></i>
+                <a href="<?= base_url(); ?>servico" class="small-box-footer">
+                  Ver <i class="fa fa-plus"></i>
                 </a>
             </div>
         </div>
@@ -88,8 +88,8 @@
                 <div class="icon">
                   <i class="fa fa-user"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  Ver + <i class="fa fa-arrow-circle-right"></i>
+                <a href="<?= base_url(); ?>contas" class="small-box-footer">
+                  Ver <i class="fa fa-plus"></i>
                 </a>
             </div>
         </div>

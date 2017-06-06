@@ -20,3 +20,5 @@ Esse sistema é um pedido do BrenoAlves, p/ agilizar o controle de clientes/serv
 2.3.3 = .3. -> inclusao da funcao de edicao de senha de usuario
 
 2.4.3 = .4. -> inclusao de contagem de algumas tabelas no painel principal
+
+2.4.4 = .4  -> verificacao dos validadores de data e correcao dos links do painel

@@ -39,7 +39,11 @@
                         <span class="label label-primary"><?php echo $valor->iniVal; ?></span>
                     </td>
                     <td>
-                        <span class="label label-danger"><?php echo $valor->fimVal; ?></span>
+                        <?php if( $valor->fimVal == NULL || $valor->fimVal == "" ){ ?>
+                            <span class="label label-info">Em Aberto</span>
+                        <?php }else{ ?>
+                            <span class="label label-danger"><?php echo $valor->fimVal; ?></span>
+                        <?php } ?>
                     </td>
                     <td><?php echo $valor->datCad; ?></td>
                     <td>

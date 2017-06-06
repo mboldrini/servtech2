@@ -59,7 +59,7 @@ class Valorservico extends CI_Controller {
 		$this->form_validation->set_rules('tipo', 		'Tipo de Serviço', 	'trim|required');
 		$this->form_validation->set_rules('valor', 		'Valor', 			'trim|required');
 		$this->form_validation->set_rules('inival', 	'Data de Início', 	'trim|required');
-		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim|required');
+		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim');
 		$this->form_validation->set_rules('datCad', 	'Data de Cadastro', 'trim|required');
 		$this->form_validation->set_rules('usuCad', 	'ID do usuário', 	'trim|required');
 
@@ -123,7 +123,7 @@ class Valorservico extends CI_Controller {
 		$this->form_validation->set_rules('tipo', 		'Tipo de Serviço', 	'trim|required');
 		$this->form_validation->set_rules('valor', 		'Valor', 			'trim|required');
 		$this->form_validation->set_rules('inival', 	'Data de Início', 	'trim|required');
-		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim|required');
+		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim');
 
 		$tipo 		= $this->input->post('tipo');
 		$valor 		= $this->input->post('valor');
