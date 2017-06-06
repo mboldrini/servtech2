@@ -7,34 +7,34 @@ class Contas extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
-			'pasta'		=> 'usuario',
+			'pasta'		=> 'Usuario',
 			'tela' 		=> 'listar',
 			'titulo' 	=> 'Usuários Cadastrados',
 			'descricao' => ' - Lista com todos os usuários cadastrados no sistema',
 			'infos' 	=> $pegaInfos,
-			'contas' 	=> $this->funcoes->getAll('users'),
+			'contas' 	=> $this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -43,15 +43,15 @@ class Contas extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idEditar = $this->uri->segment(3);
 
@@ -90,7 +90,7 @@ class Contas extends CI_Controller {
 				"descricao" => $descricao,
 			);
 
-			$this->funcoes->update($registra, 'users', $idUsuario );
+			$this->Funcoes->update($registra, 'users', $idUsuario );
 
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um usuário!';
 			$mensagem[1] = 'alert-success';
@@ -98,11 +98,11 @@ class Contas extends CI_Controller {
 		}
 
 		$dados = array(
-			'pasta'		=> 'usuario',
+			'pasta'		=> 'Usuario',
 			'tela' 		=> 'editar',
 			'titulo' 	=> 'Editar Registro de Usuário',
 			'infos' 	=> $pegaInfos,
-			'editar'	=> $this->funcoes->getById($idEditar, 'users'),
+			'editar'	=> $this->Funcoes->getById($idEditar, 'users'),
 			'mensagem'	=> $mensagem,
 		);
 
@@ -113,15 +113,15 @@ class Contas extends CI_Controller {
 
 	public function cadastrar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -164,7 +164,7 @@ class Contas extends CI_Controller {
 				"descricao" => $descricao,
 			);
 
-			$this->funcoes->insert($registra, 'users' );
+			$this->Funcoes->insert($registra, 'users' );
 
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo usuário!';
 			$mensagem[1] = 'alert-success';
@@ -172,7 +172,7 @@ class Contas extends CI_Controller {
 		}		
 
 		$dados = array(
-			'pasta'		=> 'usuario',
+			'pasta'		=> 'Usuario',
 			'tela' 		=> 'novo',
 			'titulo' 	=> 'Cadastrar Novo Usuário',
 			'infos' 	=> $pegaInfos,
@@ -186,20 +186,20 @@ class Contas extends CI_Controller {
 	
 	public function excluir()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 
 		$dados = array(
-			'pasta'		=> 'usuario',
+			'pasta'		=> 'Usuario',
 			'tela' 		=> 'excluir',
 			'titulo' 	=> 'Excluir Usuario',
 			'infos' 	=> $pegaInfos,
@@ -213,15 +213,15 @@ class Contas extends CI_Controller {
 
 	public function editarsenha()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idEditar = $this->uri->segment(3);
 		$mensagem = [];
@@ -242,17 +242,17 @@ class Contas extends CI_Controller {
 			$registra = array(
 				"password"	=> $senha,
 			);
-			$this->funcoes->update($registra, 'users', $idUsuario );
+			$this->Funcoes->update($registra, 'users', $idUsuario );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou a senha de um usuário!';
 			$mensagem[1] = 'alert-success';
 		}
 
 		$dados = array(
-			'pasta'		=> 'usuario',
+			'pasta'		=> 'Usuario',
 			'tela' 		=> 'editarsenha',
 			'titulo' 	=> 'Editar Senha',
 			'infos' 	=> $pegaInfos,
-			'editar' 	=> $this->funcoes->getById($idEditar, 'users'),
+			'editar' 	=> $this->Funcoes->getById($idEditar, 'users'),
 			'mensagem'	=> $mensagem,
 		);
 

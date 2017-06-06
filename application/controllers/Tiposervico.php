@@ -7,34 +7,34 @@ class Tiposervico extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
 			'pasta'		=>	'tiposervico',
 			'tela'		=>	'listar',
 			'titulo'	=>	'Tipos de Serviço',
 			'infos'		=>	$pegaInfos,
-			'servicos' 	=> 	$this->funcoes->getAll('tipser'),
-			'users'		=> 	$this->funcoes->getAll('users'),
+			'servicos' 	=> 	$this->Funcoes->getAll('tipser'),
+			'users'		=> 	$this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -44,15 +44,15 @@ class Tiposervico extends CI_Controller {
 
 	public function novo()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -81,7 +81,7 @@ class Tiposervico extends CI_Controller {
 				"datCad"	=> $datCad,
 				"usuCad"	=> $idUsu,
 			);
-			$this->funcoes->insert($registra, 'tipser' );
+			$this->Funcoes->insert($registra, 'tipser' );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo tipo de serviço!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -101,15 +101,15 @@ class Tiposervico extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -138,7 +138,7 @@ class Tiposervico extends CI_Controller {
 				"perdes"	=> $perDes,
 				"perAcr"	=> $perAcr,
 			);
-			$this->funcoes->update($registra, 'tipser', $idTipSer );
+			$this->Funcoes->update($registra, 'tipser', $idTipSer );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo tipo de serviço!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -149,7 +149,7 @@ class Tiposervico extends CI_Controller {
 			'titulo'	=>	'Cadastrar tipo de Serviço',
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=> 	$mensagem,
-			'editar'	=> 	$this->funcoes->getById($idEditar, 'tipser'),
+			'editar'	=> 	$this->Funcoes->getById($idEditar, 'tipser'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -158,15 +158,15 @@ class Tiposervico extends CI_Controller {
 
 	public function excluir()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 

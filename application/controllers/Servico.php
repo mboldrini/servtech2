@@ -7,36 +7,36 @@ class Servico extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
 			'pasta'		=>	'servico',
 			'tela'		=>	'listar',
 			'titulo'	=>	'Serviços Cadastrados',
 			'infos'		=>	$pegaInfos,
-			'servicos'	=>	$this->funcoes->getAll('servico'),
-			'clientes'	=>  $this->funcoes->getAll('cliente'),
-			'tipoServico'=> $this->funcoes->getAll('tipSer'),
-			'tecnicos'	=>  $this->funcoes->getAll('users'),
+			'servicos'	=>	$this->Funcoes->getAll('servico'),
+			'clientes'	=>  $this->Funcoes->getAll('cliente'),
+			'tipoServico'=> $this->Funcoes->getAll('tipSer'),
+			'tecnicos'	=>  $this->Funcoes->getAll('users'),
 
 		);
 
@@ -46,15 +46,15 @@ class Servico extends CI_Controller {
 
 	public function novo()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 		$idCliente = $this->uri->segment(3);	
@@ -96,7 +96,7 @@ class Servico extends CI_Controller {
 				"datCad"		=> $this->input->post('datCad'),
 				"usuCad"		=> $this->input->post('usuCad'),
 			);
-			$this->funcoes->insert($registra, 'servico' );
+			$this->Funcoes->insert($registra, 'servico' );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo serviço!';
 			$mensagem[1] = 'alert-success';
 		}	
@@ -108,9 +108,9 @@ class Servico extends CI_Controller {
 			'titulo'	=>	'Cadastrar Novo Serviço',
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=>	$mensagem,
-			'cliente'	=>  $this->funcoes->getById($idCliente, 'cliente'),
-			'tiposervico'=> $this->funcoes->getAll('tipser'),
-			'usuarios'	=>	$this->funcoes->getAll('users'),
+			'cliente'	=>  $this->Funcoes->getById($idCliente, 'cliente'),
+			'tiposervico'=> $this->Funcoes->getAll('tipser'),
+			'usuarios'	=>	$this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -119,15 +119,15 @@ class Servico extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 		$idEditar = $this->uri->segment(3);	
@@ -169,7 +169,7 @@ class Servico extends CI_Controller {
 				"acrescimo"		=> $this->input->post('acrescimo'),
 				"desconto"		=> $this->input->post('desconto'),
 			);
-			$this->funcoes->update($registra, 'servico', $idTipSer );
+			$this->Funcoes->update($registra, 'servico', $idTipSer );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um servico!';
 			$mensagem[1] = 'alert-success';
 		}	
@@ -180,10 +180,10 @@ class Servico extends CI_Controller {
 			'titulo'	=>	'Editar Serviço Cadastrado',
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=> 	$mensagem,
-			'editar'	=> 	$this->funcoes->getById($idEditar, 'servico'),
-			'clientes'	=>  $this->funcoes->getAll('cliente'),
-			'tiposervico'=> $this->funcoes->getAll('tipser'),
-			'usuarios'	=>	$this->funcoes->getAll('users'),
+			'editar'	=> 	$this->Funcoes->getById($idEditar, 'servico'),
+			'clientes'	=>  $this->Funcoes->getAll('cliente'),
+			'tiposervico'=> $this->Funcoes->getAll('tipser'),
+			'usuarios'	=>	$this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -193,15 +193,15 @@ class Servico extends CI_Controller {
 
 	public function excluir()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 

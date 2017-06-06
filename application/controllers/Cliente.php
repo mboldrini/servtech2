@@ -7,26 +7,26 @@ class Cliente extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -36,7 +36,7 @@ class Cliente extends CI_Controller {
 			'titulo'	=>	'Clientes',
 			'descricao'	=> 	'Clientes cadastrados no sistema',
 			'infos'		=>	$pegaInfos,
-			'clientes'	=>	$this->funcoes->getAll('cliente'),
+			'clientes'	=>	$this->Funcoes->getAll('cliente'),
 			'mensagens'	=> 	$mensagem,
 		);
 
@@ -47,15 +47,15 @@ class Cliente extends CI_Controller {
 
 	public function novo()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -90,7 +90,7 @@ class Cliente extends CI_Controller {
 				'datCad'		=> $this->input->post('datCad'),
 				'usuCad'		=> $this->input->post('usuCad'),
 			);
-			$this->funcoes->insert($registra, 'cliente' );
+			$this->Funcoes->insert($registra, 'cliente' );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo cliente!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -108,15 +108,15 @@ class Cliente extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -152,7 +152,7 @@ class Cliente extends CI_Controller {
 				'endereco'		=> $this->input->post('endereco'),
 				'observacoes'	=> $this->input->post('observacoes'),
 			);
-			$this->funcoes->update($registra, 'cliente', $idMensagem );
+			$this->Funcoes->update($registra, 'cliente', $idMensagem );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou o registro de um cliente!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -165,7 +165,7 @@ class Cliente extends CI_Controller {
 			'descricao'	=> 	'Editar informações do cliente',
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=> 	$mensagem,
-			'editar'	=> 	$this->funcoes->getById($idEditar, 'cliente'),
+			'editar'	=> 	$this->Funcoes->getById($idEditar, 'cliente'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -174,14 +174,14 @@ class Cliente extends CI_Controller {
 
 
 	public function excluir()	{
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 

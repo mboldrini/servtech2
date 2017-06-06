@@ -8,6 +8,6 @@
   // vai redirecionar pra onde
   $redireciona = 'tiposervico';
   
-  $cliente = $this->funcoes->delete($cond, $tabela, $redireciona);
+  $cliente = $this->Funcoes->delete($cond, $tabela, $redireciona);
 
 ?>

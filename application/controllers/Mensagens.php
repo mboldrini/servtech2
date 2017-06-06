@@ -7,26 +7,26 @@ class Mensagens extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
 			'pasta'		=>	'mensagens',
@@ -34,8 +34,8 @@ class Mensagens extends CI_Controller {
 			'titulo'	=>	'Mensagens de Aviso',
 			'descricao' =>  'Todas as mensagens de aviso cadastradas no sistema',
 			'infos'		=>	$pegaInfos,
-			'mensagens'	=>	$this->funcoes->getAll('aviso'),
-			'usuarios'	=> 	$this->funcoes->getAll('users'),
+			'mensagens'	=>	$this->Funcoes->getAll('aviso'),
+			'usuarios'	=> 	$this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -45,15 +45,15 @@ class Mensagens extends CI_Controller {
 
 	public function novo()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -83,7 +83,7 @@ class Mensagens extends CI_Controller {
 				"ativo"		=> $ativo,
 				"idUsuario"	=> $idUsuario,
 			);
-			$this->funcoes->insert($registra, 'aviso' );
+			$this->Funcoes->insert($registra, 'aviso' );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um aviso/mensagem!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -104,15 +104,15 @@ class Mensagens extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idEditar = $this->uri->segment(3);
 
@@ -145,7 +145,7 @@ class Mensagens extends CI_Controller {
 				"cor"		=> $cor,
 				"ativo"		=> $ativo,
 			);
-			$this->funcoes->update($registra, 'aviso', $idMensagem );
+			$this->Funcoes->update($registra, 'aviso', $idMensagem );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um aviso/mensagem!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -155,7 +155,7 @@ class Mensagens extends CI_Controller {
 			'tela'		=>	'editar',
 			'titulo'	=>	'Editar mensagem/aviso',
 			'infos'		=>	$pegaInfos,
-			'editar'	=> 	$this->funcoes->getById($idEditar, 'aviso'),
+			'editar'	=> 	$this->Funcoes->getById($idEditar, 'aviso'),
 			'mensagem'	=> 	$mensagem,
 		);
 
@@ -165,15 +165,15 @@ class Mensagens extends CI_Controller {
 
 	public function excluir()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 

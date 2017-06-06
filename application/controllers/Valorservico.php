@@ -7,35 +7,35 @@ class Valorservico extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
-		$this->load->model('usuario');
+		$this->load->helper('form', 'Funcoes_helper');
+		#pegar as infos dos Usuarios
+		$this->load->model('Usuario');
 
-		$this->load->model('funcoes');
+		$this->load->model('Funcoes');
 
 	}
 	
 
 	public function index()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
 			'pasta'		=>	'valorservico',
 			'tela'		=>	'listar',
 			'titulo'	=>	'Valores de Serviços',
 			'infos'		=>	$pegaInfos,
-			'valores'	=>  $this->funcoes->getAll('valser'),
-			'tipoServico'=> $this->funcoes->getAll('tipser'),
-			'usuario'=> $this->funcoes->getAll('users'),
+			'valores'	=>  $this->Funcoes->getAll('valser'),
+			'tipoServico'=> $this->Funcoes->getAll('tipser'),
+			'usuario'=> $this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -44,15 +44,15 @@ class Valorservico extends CI_Controller {
 
 	public function cadastrar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$mensagem = [];
 
@@ -84,7 +84,7 @@ class Valorservico extends CI_Controller {
 				"datCad"	=> $datCad,
 				"usuCad"	=> $usuCad,
 			);
-			$this->funcoes->insert($registra, 'valser' );
+			$this->Funcoes->insert($registra, 'valser' );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um valor de serviço!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -95,7 +95,7 @@ class Valorservico extends CI_Controller {
 			'titulo'	=>	'Cadastro de Valor',
 			'descricao'	=>  "Tela de cadastro de valor de serviço",
 			'infos'		=>	$pegaInfos,
-			'tipoServico'=> $this->funcoes->getAll('tipser'),
+			'tipoServico'=> $this->Funcoes->getAll('tipser'),
 			'mensagem'	=>  $mensagem,
 		);
 
@@ -106,15 +106,15 @@ class Valorservico extends CI_Controller {
 
 	public function editar()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idEditar = $this->uri->segment(3);
 
@@ -146,7 +146,7 @@ class Valorservico extends CI_Controller {
 				"iniVal"	=> $iniVal,
 				"fimVal"	=> $fimVal,
 			);
-			$this->funcoes->update($registra, 'valser', $idMensagem );
+			$this->Funcoes->update($registra, 'valser', $idMensagem );
 			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um valor de serviço!';
 			$mensagem[1] = 'alert-success';
 		}
@@ -157,8 +157,8 @@ class Valorservico extends CI_Controller {
 			'tela'		=>	'editar',
 			'titulo'	=>	'Editar Valores de Serviços',
 			'infos'		=>	$pegaInfos,
-			'editar'	=> 	$this->funcoes->getById($idEditar, 'valser'),
-			'tipoServico'=> $this->funcoes->getAll('tipser'),
+			'editar'	=> 	$this->Funcoes->getById($idEditar, 'valser'),
+			'tipoServico'=> $this->Funcoes->getAll('tipser'),
 			'mensagem'	=> 	$mensagem,
 		);
 
@@ -169,15 +169,15 @@ class Valorservico extends CI_Controller {
 
 	public function excluir()	{
 
-		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		# verificação de Usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');
 		}
 
-		# pega o nome do usuario que tem na session e passa >
+		# pega o nome do Usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
+		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$idExcluir = $this->uri->segment(3);
 

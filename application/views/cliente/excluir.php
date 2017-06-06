@@ -8,6 +8,6 @@
   // vai redirecionar pra onde
   $redireciona = 'cliente';
   
-  $cliente = $this->funcoes->delete($cond, $tabela, $redireciona);
+  $cliente = $this->Funcoes->delete($cond, $tabela, $redireciona);
 
 ?>
