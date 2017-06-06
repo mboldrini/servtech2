@@ -24,3 +24,5 @@ Esse sistema é um pedido do BrenoAlves, p/ agilizar o controle de clientes/serv
 2.4.4 = .4  -> verificacao dos validadores de data e correcao dos links do painel
 
 2.4.5 = .5  -> alteracoes visuais em todos os formularios de cadastro
+
+2.5.6 = 5.6. -> campos de datas que antes eram varchar e agora sao todo do tipo DATE

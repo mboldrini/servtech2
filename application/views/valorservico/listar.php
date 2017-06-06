@@ -36,16 +36,16 @@
                     </td>
                     <td><i class="fa fa-usd"></i>  <?php echo $valor->valor; ?></td>
                     <td>
-                        <span class="label label-primary"><?php echo $valor->iniVal; ?></span>
+                        <span class="label label-primary"><?php echo implode('/', array_reverse(explode('-', $valor->iniVal))) ?></span>
                     </td>
                     <td>
-                        <?php if( $valor->fimVal == NULL || $valor->fimVal == "" ){ ?>
+                        <?php if( $valor->fimVal == "0000-00-00" ){ ?>
                             <span class="label label-info">Em Aberto</span>
                         <?php }else{ ?>
-                            <span class="label label-danger"><?php echo $valor->fimVal; ?></span>
+                            <span class="label label-danger"><?php echo implode('/', array_reverse(explode('-', $valor->fimVal))) ?></span>
                         <?php } ?>
                     </td>
-                    <td><?php echo $valor->datCad; ?></td>
+                    <td><?php echo implode('/', array_reverse(explode('-', $valor->datCad))) ?></td>
                     <td>
                         <?php foreach( $usuario as $user): ?>
                             <?php if( $user->id == $valor->usuCad){ echo $user->nome; } ?>

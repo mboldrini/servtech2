@@ -65,9 +65,9 @@ class Valorservico extends CI_Controller {
 
 		$tipo 		= $this->input->post('tipo');
 		$valor 		= $this->input->post('valor');
-		$iniVal 	= $this->input->post('inival');
-		$fimVal 	= $this->input->post('fimVal');
-		$datCad 	= $this->input->post('datCad');
+		$iniVal 	= implode('-', array_reverse(explode('/', $this->input->post('inival'))));
+		$fimVal 	= implode('-', array_reverse(explode('/', $this->input->post('fimVal'))));
+		$datCad 	= implode('-', array_reverse(explode('/', $this->input->post('datCad'))));
 		$usuCad	 	= $this->input->post('usuCad');
 
 		if( $this->form_validation->run() == FALSE ){
@@ -127,8 +127,8 @@ class Valorservico extends CI_Controller {
 
 		$tipo 		= $this->input->post('tipo');
 		$valor 		= $this->input->post('valor');
-		$iniVal 	= $this->input->post('inival');
-		$fimVal 	= $this->input->post('fimVal');
+		$iniVal 	= implode('-', array_reverse(explode('/', $this->input->post('inival'))));
+		$fimVal 	= implode('-', array_reverse(explode('/', $this->input->post('fimVal'))));
 		$id 		= $this->input->post('id');
 
 		if( $this->form_validation->run() == FALSE ){

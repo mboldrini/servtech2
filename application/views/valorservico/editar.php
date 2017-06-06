@@ -56,12 +56,16 @@
   
   	<div class="form-group">
 	    <label for="exampleInputEmail1">Data de Início:</label>
+
+	    <?php $dataInicio = implode('/', array_reverse(explode('-', $editar->iniVal))); ?>
 	    <?php echo form_input(
 	      'inival', 
-	      $editar->iniVal,
+	      $dataInicio,
 	      array( 'class'    	=>  'form-control col-md-3',
 	             'required'   	=>  'required',
 	             'placeholder'  =>  'Data de Início',
+	             'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'', 
 	            ) 
 	        ); 
 	    ?>
@@ -69,11 +73,15 @@
 
 	<div class="form-group">
 	    <label for="exampleInputEmail1">Data Final:</label>
+	    <?php $dataFinal = implode('/', array_reverse(explode('-', $editar->fimVal))); ?>
+	    <?php echo $dataFinal; ?>
 	    <?php echo form_input(
 	      'fimVal', 
-	      $editar->fimVal,
+	      $dataFinal,
 	      array( 'class'    	=>  'form-control col-md-3',
 	             'placeholder'  =>  'Data Final',
+	             'data-mask' => 'data-mask',
+             'data-inputmask' => '\'alias\': \'dd/mm/yyyy\'', 
 	            ) 
 	        ); 
 	    ?>
@@ -84,7 +92,7 @@
 	
 
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary">Editar</button>
 
 <?php form_close(); ?>
 
