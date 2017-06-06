@@ -54,7 +54,9 @@
                         <?php } ?>
                     <?php endforeach; ?>
                 </td>
-                <td><?php echo $servico->datCad; ?></td>
+                <td>
+                    <?php echo implode('/', array_reverse(explode('-', $servico->datCad ))); ?>
+                </td>
                 <td>
                     <?php foreach( $tecnicos as $tecnico ): ?>
                         <?php if( $tecnico->id == $servico->tecRes ){ ?>

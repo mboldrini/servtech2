@@ -99,9 +99,10 @@
 
 	<div class="col-md-2">
 		<label for="exampleInputEmail1">Previsão de Conclusão:</label>
+		<?php $datPreCon = implode('/', array_reverse(explode('-', $editar->preCon ))); ?>
 	    <?php echo form_input(
 	      'preCon', 
-	      $editar->preCon,
+	      $datPreCon,
 	      array( 'class'    =>  'form-control col-md-3',
 	             'required'   =>  'required',
 	             'placeholder'  =>  'Previsão de Conclusão',
@@ -161,9 +162,10 @@
 
 	<div class="col-md-3">
 		<label for="exampleInputEmail1">Data de Conclusão:</label>
+		<?php $datCon = implode('/', array_reverse(explode('-', $editar->datCon ))); ?>
 	    <?php echo form_input(
 	      'datCon', 
-	      $editar->datCon,
+	      $datCon,
 	      array( 'class'    =>  'form-control col-md-3',
 	             'placeholder'  =>  'Data de Conclusão',
 	             'data-mask' => 'data-mask',

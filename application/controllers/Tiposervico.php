@@ -65,7 +65,7 @@ class Tiposervico extends CI_Controller {
 		$tipo 	= $this->input->post('tipo');
 		$perDes = $this->input->post('perDes');
 		$perAcr = $this->input->post('perAcr');
-		$datCad = $this->input->post('datCad');
+		$datCad = implode('-', array_reverse(explode('/', $this->input->post('datCad'))));
 		$idUsu 	= $this->input->post('idUsu');
 
 		if( $this->form_validation->run() == FALSE ){
