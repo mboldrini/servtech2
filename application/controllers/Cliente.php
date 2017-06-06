@@ -91,7 +91,7 @@ class Cliente extends CI_Controller {
 				'usuCad'		=> $this->input->post('usuCad'),
 			);
 			$this->funcoes->insert($registra, 'cliente' );
-			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo clietne!';
+			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo cliente!';
 			$mensagem[1] = 'alert-success';
 		}
 

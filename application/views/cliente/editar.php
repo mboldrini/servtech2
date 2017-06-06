@@ -1,19 +1,19 @@
 <div class="row">
 
-<div class="col-md-4">
-
 <?php echo form_open(); ?>
 
-<?php 
-  if( isset( $mensagem ) && $mensagem != null ){
-    echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  '.$mensagem[0].'</div>';
-  }
-?>
+<div class="col-md-12">
+	<?php 
+		if( isset( $mensagem ) && $mensagem != null ){
+	    	echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
+	  		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  		'.$mensagem[0].'</div>';
+	  	}
+	?>
+</div>
 	
-	<div class="form-group">
-	    <label for="exampleInputEmail1">ID:</label>
+	<div class="col-md-1">
+		<label for="exampleInputEmail1">ID:</label>
 	    <?php echo form_input(
 	      'id', 
 	      $editar->id,
@@ -24,10 +24,10 @@
 	            ) 
 	        ); 
 	    ?>
-  	</div>
-  
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Nome:</label>
+	</div>
+	
+	<div class="col-md-5">
+		<label for="exampleInputEmail1">Nome:</label>
 	    <?php echo form_input(
 	      'nome', 
 	      $editar->nome,
@@ -38,10 +38,10 @@
 	            ) 
 	        ); 
 	    ?>
-  	</div>
-
-  	<div class="form-group">
-		<label for="Status">Tipo:</label>
+	</div>
+  
+  	<div class="col-md-2">
+  		<label for="Status">Tipo:</label>
 		<select name="tipo" id="tipo" class="form-control">	
 			<?php if( $editar->tipo == 'F' || $editar->tipo == 'f' ){ ?>
 				<option value="F" selected>P. Física</option>
@@ -51,10 +51,10 @@
 				<option value="F">P. Física</option>
 			<?php } ?>
 		</select>
-	</div>
+  	</div>
 
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Registro (CPF/CNPJ):</label>
+  	<div class="col-md-3">
+  		<label for="exampleInputEmail1">Registro (CPF/CNPJ):</label>
 	    <?php echo form_input(
 	      'registro', 
 	      $editar->registro,
@@ -66,8 +66,8 @@
 	    ?>
   	</div>
 
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Data de Nascimento:</label>
+  	<div class="col-md-2">
+  		<label for="exampleInputEmail1">Data de Nascimento:</label>
 	    <?php echo form_input(
 	      'datNas', 
 	      $editar->datNas ,
@@ -78,8 +78,8 @@
 	    ?>
   	</div>
 
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Celular:</label>
+  	<div class="col-md-2">
+  		<label for="exampleInputEmail1">Celular:</label>
 	    <?php echo form_input(
 	      'celular', 
 	      $editar->celular ,
@@ -89,9 +89,9 @@
 	        ); 
 	    ?>
   	</div>
-	
-	<div class="form-group">
-	    <label for="exampleInputEmail1">Telefone:</label>
+
+  	<div class="col-md-2">
+  		<label for="exampleInputEmail1">Telefone:</label>
 	    <?php echo form_input(
 	      'telefone', 
 	      $editar->telefone ,
@@ -101,21 +101,21 @@
 	        ); 
 	    ?>
   	</div>
+	
+	<div class="col-md-5">
+		<label for="exampleInputEmail1">Email:</label>
+		    <?php echo form_input(
+		      'email', 
+		      $editar->email ,
+		      array( 'class'		=>	'form-control col-md-3',
+		             'placeholder'	=>	'Email',
+		            ) 
+		        ); 
+		    ?>
+	</div>
 
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Email:</label>
-	    <?php echo form_input(
-	      'email', 
-	      $editar->email ,
-	      array( 'class'		=>	'form-control col-md-3',
-	             'placeholder'	=>	'Email',
-	            ) 
-	        ); 
-	    ?>
-  	</div>
-
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Endereço:</label>
+  	<div class="col-md-12">
+  		<label for="exampleInputEmail1">Endereço:</label>
 	    <?php echo form_input(
 	      'endereco', 
 	      $editar->endereco ,
@@ -126,8 +126,8 @@
 	    ?>
   	</div>
 
-  	<div class="form-group">
-	    <label for="exampleInputEmail1">Observações:</label>
+  	<div class="col-md-12">
+  		<label for="exampleInputEmail1">Observações:</label>
 	    <?php echo form_textarea(
 	      'observacoes', 
 	      $editar->observacoes,
@@ -138,10 +138,12 @@
 	    ?>
   	</div>
 
+  	<div class="col-md-12">
+  		<br>
+		<button type="submit" class="btn btn-primary">Editar</button>
+  	</div>
 
-	<button type="submit" class="btn btn-primary">Editar</button>
 
 <?php form_close(); ?>
 
-	</div><!--col-md-4-->
 </div><!--row-->
