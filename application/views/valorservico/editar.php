@@ -31,10 +31,10 @@
 		<label for="Status">Tipo de Servico:</label>
 		<select name="tipo" id="tipo" class="form-control">
 			<?php foreach( $tipoServico as $servico ): ?>
-				<?php if( $servico->tipo == $editar->tipo ){ ?>
-					<option value="<?php echo $servico->tipo; ?>" selected><?php echo $servico->tipo; ?></option>
+				<?php if( $servico->id == $editar->tipo ){ ?>
+					<option value="<?php echo $servico->id; ?>" selected><?php echo $servico->tipo; ?></option>
 				<?php }else{ ?>
-					<option value="<?php echo $servico->tipo; ?>"><?php echo $servico->tipo; ?></option>
+					<option value="<?php echo $servico->id; ?>"><?php echo $servico->tipo; ?></option>
 				<?php } ?>
 			<?php endforeach; ?>
 		</select>

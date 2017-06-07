@@ -29,12 +29,13 @@ class Valorservico extends CI_Controller {
 		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
-			'pasta'		=>	'valorservico',
-			'tela'		=>	'listar',
-			'titulo'	=>	'Valores de Serviços',
-			'infos'		=>	$pegaInfos,
+			'pasta'			=>	'valorservico',
+			'tela'			=>	'listar',
+			'titulo'		=>	'Valores de Serviços',
+			'infos'			=>	$pegaInfos,
 			'valores'	=>  $this->Funcoes->getAll('valser'),
-			'usuario'=> $this->Funcoes->getAll('users'),
+			'tiposervico'	=>  $this->Funcoes->getAll('tipser'),
+			'usuario'		=>  $this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -55,7 +56,7 @@ class Valorservico extends CI_Controller {
 
 		$mensagem = [];
 
-		$this->form_validation->set_rules('tipo', 		'Tipo de Serviço', 	'trim|required');
+		$this->form_validation->set_rules('tipo', 		'Tipo de Serviço', 	'trim|required|callback_validaTipo[tipo]');
 		$this->form_validation->set_rules('valor', 		'Valor', 			'trim|required');
 		$this->form_validation->set_rules('inival', 	'Data de Início', 	'trim|required');
 		$this->form_validation->set_rules('fimVal', 	'Data Final', 		'trim');
@@ -96,10 +97,24 @@ class Valorservico extends CI_Controller {
 			'infos'		=>	$pegaInfos,
 			'tipoServico'=> $this->Funcoes->getAll('tipser'),
 			'mensagem'	=>  $mensagem,
+
+			$dois = array("tipo"=>"10"),
+			'teste' => $this->Funcoes->countWhere('valser', $dois),
 		);
 
 		$this->load->view('tela',$dados);
 
+	}
+
+
+	function validaTipo( $campo ){	
+		$tabela = "valser";
+  		$coluna = array("tipo"=> $campo );
+	   	if( $this->Funcoes->countWhere($tabela, $coluna ) >= 1 ){
+	    	return FALSE;
+		}else{
+	    	return TRUE;
+	   	}
 	}
 
 
@@ -185,7 +200,7 @@ class Valorservico extends CI_Controller {
 			'tela'		=>	'excluir',
 			'titulo'	=>	'Excluir Valor de Serviço',
 			'infos'		=>	$pegaInfos,
-			'idExcluir'	=> $idExcluir,
+			'idExcluir'	=> 	$idExcluir,
 
 		);
 

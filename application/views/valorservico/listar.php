@@ -10,6 +10,7 @@
 
 <?php if( isset($valores) && $valores != NULL ){ ?>
 
+
 <div class="box">
     <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -30,7 +31,11 @@
                 <tr>
                     <td><?php echo $valor->id; ?></td>
                     <td>
-                        <?php echo $valor->tipo; ?>
+                        <?php foreach( $tiposervico as $tipo ): ?>
+                            <?php if( $tipo->id == $valor->tipo ){ ?>
+                                <?php echo $tipo->tipo; ?>
+                            <?php } ?>
+                        <?php endforeach; ?>
                     </td>
                     <td><i class="fa fa-usd"></i>  <?php echo $valor->valor; ?></td>
                     <td>
