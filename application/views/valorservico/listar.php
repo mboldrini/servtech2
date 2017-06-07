@@ -30,9 +30,7 @@
                 <tr>
                     <td><?php echo $valor->id; ?></td>
                     <td>
-                        <?php foreach( $tipoServico as $tipo ): ?>
-                            <?php if( $tipo->id == $valor->tipo){ echo $tipo->tipo; } ?>
-                        <?php endforeach; ?>
+                        <?php echo $valor->tipo; ?>
                     </td>
                     <td><i class="fa fa-usd"></i>  <?php echo $valor->valor; ?></td>
                     <td>

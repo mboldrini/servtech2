@@ -29,14 +29,14 @@ class Servico extends CI_Controller {
 		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
-			'pasta'		=>	'servico',
-			'tela'		=>	'listar',
-			'titulo'	=>	'Serviços Cadastrados',
-			'infos'		=>	$pegaInfos,
-			'servicos'	=>	$this->Funcoes->getAll('servico'),
-			'clientes'	=>  $this->Funcoes->getAll('cliente'),
-			'tipoServico'=> $this->Funcoes->getAll('tipSer'),
-			'tecnicos'	=>  $this->Funcoes->getAll('users'),
+			'pasta'			=>	'servico',
+			'tela'			=>	'listar',
+			'titulo'		=>	'Serviços Cadastrados',
+			'infos'			=>	$pegaInfos,
+			'servicos'		=>	$this->Funcoes->getAll('servico'),
+			'clientes'		=>  $this->Funcoes->getAll('cliente'),
+			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
+			'tecnicos'		=>  $this->Funcoes->getAll('users'),
 
 		);
 
@@ -60,7 +60,7 @@ class Servico extends CI_Controller {
 		$idCliente = $this->uri->segment(3);	
 
 		$this->form_validation->set_rules('codCli',		'Código Cliente',		'trim|required');
-		$this->form_validation->set_rules('tipo',		'titulo',				'trim|required');
+		$this->form_validation->set_rules('tipo',		'Tipo de Serviço',		'trim|required');
 		$this->form_validation->set_rules('solicitado',	'solicitado',			'trim|required');
 		$this->form_validation->set_rules('detectado',	'detectado',			'trim');
 		$this->form_validation->set_rules('preCon',		'previsao',				'trim|required');
@@ -85,17 +85,14 @@ class Servico extends CI_Controller {
 				"tipo"			=> $this->input->post('tipo'),
 				"solicitado"	=> $this->input->post('solicitado'),
 				"detectado"		=> $this->input->post('detectado'),
-				//"preCon"		=> $this->input->post('preCon'),
 				"preCon"		=> implode('-', array_reverse(explode('/', $this->input->post('preCon')))),
 				"status"		=> $this->input->post('status'),
 				"solucao"		=> $this->input->post('solucao'),
 				"observacao"	=> $this->input->post('observacao'),
-				//"datCon"		=> $this->input->post('datCon'),
 				"datCon"		=> implode('-', array_reverse(explode('/', $this->input->post('datCon')))),
 				"tecRes"		=> $this->input->post('tecRes'),
 				"acrescimo"		=> $this->input->post('acrescimo'),
 				"desconto"		=> $this->input->post('desconto'),
-				// "datCad"		=> $this->input->post('datCad'),
 				"datCad"		=> implode('-', array_reverse(explode('/', $this->input->post('datCad')))),
 				"usuCad"		=> $this->input->post('usuCad'),
 			);
@@ -104,16 +101,16 @@ class Servico extends CI_Controller {
 			$mensagem[1] = 'alert-success';
 		}	
 
-
 		$dados = array(
-			'pasta'		=>	'servico',
-			'tela'		=>	'novo',
-			'titulo'	=>	'Cadastrar Novo Serviço',
-			'infos'		=>	$pegaInfos,
-			'mensagem'	=>	$mensagem,
-			'cliente'	=>  $this->Funcoes->getById($idCliente, 'cliente'),
-			'tiposervico'=> $this->Funcoes->getAll('tipser'),
-			'usuarios'	=>	$this->Funcoes->getAll('users'),
+			'pasta'			=>	'servico',
+			'tela'			=>	'novo',
+			'titulo'		=>	'Cadastrar Novo Serviço',
+			'infos'			=>	$pegaInfos,
+			'mensagem'		=>	$mensagem,
+			'cliente'		=>  $this->Funcoes->getById($idCliente, 'cliente'),
+			'tiposervico'	=> 	$this->Funcoes->getAll('tipser'),
+			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
+			'usuarios'		=>	$this->Funcoes->getAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
@@ -185,7 +182,8 @@ class Servico extends CI_Controller {
 			'mensagem'	=> 	$mensagem,
 			'editar'	=> 	$this->Funcoes->getById($idEditar, 'servico'),
 			'clientes'	=>  $this->Funcoes->getAll('cliente'),
-			'tiposervico'=> $this->Funcoes->getAll('tipser'),
+			'tiposervico'	=> 	$this->Funcoes->getAll('tipser'),
+			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
 			'usuarios'	=>	$this->Funcoes->getAll('users'),
 		);
 

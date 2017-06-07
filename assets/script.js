@@ -53,11 +53,18 @@ $(document).ready(function(){
 
 
 
+/// parte dos valores no cadastro de servicos
+//alert("asfasf");
 
+// var $banana = $( "#tipo option:selected" ).text();
+// alert( $banana );
 
+// $("#tipo").click(function(){
 
+//   var $banana = $( "#tipo option:selected" ).name();
 
+//   $("#valor").val( "teste" );
 
-  
+// });
 
 });

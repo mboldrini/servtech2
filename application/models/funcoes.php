@@ -81,5 +81,16 @@ class Funcoes extends CI_Model {
 	}
 
 
+	public function getValores( $tabela ){
+		
+		$this->db->select("*");
+   		$this->db->from( $tabela );
+    	$this->db->where( "fimVal = '0000-00-00' " );
+   		$query = $this->db->get();        
+   		return $query->result();
+		
+	}
+
+
 
 }

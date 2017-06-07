@@ -18,6 +18,7 @@
                     <th>Cliente</th>
                     <th>Status</th>
                     <th>Tipo</th>
+                    <th>Valor</th>
                     <th>Data de Cadastro</th>
                     <th>Técnico Responsável</th>
                     <th>Opções</th>
@@ -48,9 +49,16 @@
                     <?php } ?>
                 </td>
                 <td>
-                    <?php foreach( $tipoServico as $tipo): ?>
-                        <?php if( $tipo->id == $servico->tipo ){ ?>
-                            <?php echo $tipo->tipo; ?>
+                    <?php foreach( $valorservico as $valser ): ?>
+                        <?php if( $valser->id == $servico->tipo ){ ?>
+                            <?php echo $valser->tipo; ?>
+                        <?php } ?>
+                    <?php endforeach; ?>
+                </td>
+                <td>
+                    <?php foreach( $valorservico as $valser ): ?>
+                        <?php if( $valser->id == $servico->tipo ){ ?>
+                            <i class="fa fa-usd"></i> <?php echo $valser->valor; ?>
                         <?php } ?>
                     <?php endforeach; ?>
                 </td>

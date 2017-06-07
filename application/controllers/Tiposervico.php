@@ -146,7 +146,7 @@ class Tiposervico extends CI_Controller {
 		$dados = array(
 			'pasta'		=>	'tiposervico',
 			'tela'		=>	'editar',
-			'titulo'	=>	'Cadastrar tipo de Serviço',
+			'titulo'	=>	'Editar tipo de Serviço',
 			'infos'		=>	$pegaInfos,
 			'mensagem'	=> 	$mensagem,
 			'editar'	=> 	$this->Funcoes->getById($idEditar, 'tipser'),

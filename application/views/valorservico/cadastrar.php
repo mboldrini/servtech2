@@ -17,7 +17,7 @@
 		<label for="Status">Tipo de Servico:</label>
 		<select name="tipo" id="tipo" class="form-control">
 			<?php foreach( $tipoServico as $servico ): ?>
-				<option value="<?php echo $servico->id; ?>"><?php echo $servico->tipo; ?></option>
+				<option value="<?php echo $servico->tipo; ?>"><?php echo $servico->tipo; ?></option>
 			<?php endforeach; ?>
 		</select>
 	</div>

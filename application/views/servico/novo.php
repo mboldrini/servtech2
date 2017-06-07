@@ -51,15 +51,14 @@
     </div>
 
 	
-  	<div class="col-md-4">
+  	<div class="col-md-3">
   		<label for="exampleInputEmail1">Tipo de Serviço:</label>
 		<select name="tipo" id="tipo" class="form-control">
-			<?php foreach( $tiposervico as $tipo ): ?>
-				<option value="<?php echo $tipo->id; ?>"><?php echo $tipo->tipo; ?></option>
+			<?php foreach( $valorservico as $valser ): ?>
+				<option value="<?php echo $valser->id; ?>"><?php echo $valser->tipo; ?></option>
 			<?php endforeach; ?>
 		</select>
   	</div>
-
 
 	<div class="col-md-3">
 		<label for="exampleInputEmail1">Status:</label>

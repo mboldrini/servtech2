@@ -34,7 +34,6 @@ class Valorservico extends CI_Controller {
 			'titulo'	=>	'Valores de Serviços',
 			'infos'		=>	$pegaInfos,
 			'valores'	=>  $this->Funcoes->getAll('valser'),
-			'tipoServico'=> $this->Funcoes->getAll('tipser'),
 			'usuario'=> $this->Funcoes->getAll('users'),
 		);
 

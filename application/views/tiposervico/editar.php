@@ -71,7 +71,7 @@
 
 
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary">Editar</button>
 
 <?php form_close(); ?>
 

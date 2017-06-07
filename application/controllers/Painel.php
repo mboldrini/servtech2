@@ -31,16 +31,16 @@ class Painel extends CI_Controller {
 		$avisoAtivo = array("ativo"=>'1');
 
 		$dados = array(
-			'pasta'		=> 'base',
-			'tela' 		=> 'content',
-			'titulo' 	=> 'Painel Administrativo',
-			'descricao' => ' - Painel Geral do Sistema',
-			'infos' 	=> $pegaInfos,
-			'mensagens'	=> $this->Funcoes->getWhere($avisoAtivo, 'aviso'),
-			'clientes' =>  $this->Funcoes->countAll('cliente'),
-			'tiposervico'=> $this->Funcoes->countAll('tipser'),
-			'servicos'=> $this->Funcoes->countAll('servico'),
-			'usuarios'=> $this->Funcoes->countAll('users'),
+			'pasta'			=> 'base',
+			'tela' 			=> 'content',
+			'titulo' 		=> 'Painel Administrativo',
+			'descricao' 	=> ' - Painel Geral do Sistema',
+			'infos' 		=> $pegaInfos,
+			'mensagens'		=> $this->Funcoes->getWhere($avisoAtivo, 'aviso'),
+			'clientes' 		=>  $this->Funcoes->countAll('cliente'),
+			'tiposervico'	=> $this->Funcoes->countAll('tipser'),
+			'servicos'		=> $this->Funcoes->countAll('servico'),
+			'usuarios'		=> $this->Funcoes->countAll('users'),
 		);
 
 		$this->load->view('tela',$dados);
