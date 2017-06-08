@@ -55,7 +55,11 @@
   		<label for="exampleInputEmail1">Tipo de Serviço:</label>
 		<select name="tipo" id="tipo" class="form-control">
 			<?php foreach( $valorservico as $valser ): ?>
-				<option value="<?php echo $valser->id; ?>"><?php echo $valser->tipo; ?> - $<?php echo $valser->valor; ?></option>
+				<?php foreach( $tiposervico as $tipo ): ?>
+					<?php if( $tipo->id == $valser->tipo ){ ?>
+						<option value="<?php echo $valser->id; ?>"><?php echo $tipo->tipo; ?> - $<?php echo $valser->valor; ?></option>
+					<?php } ?>
+				<?php endforeach; ?>
 			<?php endforeach; ?>
 		</select>
   	</div>
