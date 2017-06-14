@@ -36,6 +36,7 @@ class Servico extends CI_Controller {
 			'servicos'		=>	$this->Funcoes->getAll('servico'),
 			'clientes'		=>  $this->Funcoes->getAll('cliente'),
 			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
+			'tiposervico'	=>	$this->Funcoes->getAll('tipser'),
 			'tecnicos'		=>  $this->Funcoes->getAll('users'),
 
 		);

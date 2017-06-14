@@ -21,6 +21,7 @@
                     <th>Valor</th>
                     <th>Data de Cadastro</th>
                     <th>Técnico Responsável</th>
+                    <th>O.S.</th>
                     <th>Opções</th>
                 </tr>
             </thead>
@@ -49,16 +50,16 @@
                     <?php } ?>
                 </td>
                 <td>
-                    <?php foreach( $valorservico as $valser ): ?>
-                        <?php if( $valser->id == $servico->tipo ){ ?>
-                            <?php echo $valser->tipo; ?>
+                    <?php foreach( $tiposervico as $tipo ): ?>
+                        <?php if( $tipo->id == $servico->tipo ){ ?>
+                            <?php echo $tipo->tipo; ?>
                         <?php } ?>
                     <?php endforeach; ?>
                 </td>
                 <td>
                     <?php foreach( $valorservico as $valser ): ?>
-                        <?php if( $valser->id == $servico->tipo ){ ?>
-                            <i class="fa fa-usd"></i> <?php echo $valser->valor; ?>
+                        <?php if( $valser->tipo == $servico->tipo ){ ?>
+                            <i class="fa fa-usd"></i><?php echo $valser->valor; ?>
                         <?php } ?>
                     <?php endforeach; ?>
                 </td>
@@ -73,9 +74,14 @@
                     <?php endforeach; ?>
                 </td>
                 <td>
+                    <a class="btn bg-navy" href="<?= base_url('ordemservico/exibe/' . $servico->id) ?>" role="button">
+                        <i class="fa fa-print "></i>  O.S.
+                    </a>
+                </td>
+                <td>
                     <a class="btn btn-info" href="<?= base_url('servico/editar/' . $servico->id) ?>" role="button">
                             <i class="fa fa-pencil "></i>  Editar
-                        </a>
+                    </a>
                     <a class="btn btn-danger" href="<?= base_url('servico/excluir/' . $servico->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');"><i class="fa fa-trash "></i>  Excluir</a>
                 </td>
             </tr>

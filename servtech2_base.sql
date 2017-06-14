@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Jun-2017 às 16:47
+-- Generation Time: 08-Jun-2017 às 16:44
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -132,8 +132,8 @@ CREATE TABLE `servico` (
 --
 
 INSERT INTO `servico` (`id`, `codCli`, `tipo`, `solicitado`, `detectado`, `preCon`, `status`, `solucao`, `observacao`, `datCon`, `tecRes`, `acrescimo`, `desconto`, `datCad`, `usuCad`) VALUES
-(312, 6, 12, '564as5f64as5f', '', '0000-00-00', '1', '', '', '0000-00-00', 1, '', '', '2017-06-07', 1),
-(313, 26, 10, 'asfasasf', '', '0000-00-00', '4', '', '', '0000-00-00', 1, '', '', '2017-06-07', 1);
+(3, 5, 10, 'asf', '', '2017-06-08', '1', '', '', '0000-00-00', 1, '', '', '2017-06-08', 1),
+(4, 27, 18, 'asf', '', '2065-05-05', '2', '', '', '0000-00-00', 1, '', '', '2017-06-08', 1);
 
 -- --------------------------------------------------------
 
@@ -157,12 +157,8 @@ CREATE TABLE `tipser` (
 INSERT INTO `tipser` (`id`, `tipo`, `perDes`, `perAcr`, `datCad`, `usuCad`) VALUES
 (10, 'Formatacao1', '0', '0', '2017-06-06', 1),
 (11, 'Formatacao2', '0', '0', '2017-06-07', 1),
-(12, 'Backup1', '0', '0', '2017-06-07', 1),
-(13, 'Backup2', '0', '0', '2017-06-07', 1),
-(14, 'Limpeza1', '0', '0', '2017-06-07', 1),
-(15, 'Limpeza2', '0', '0', '2017-06-07', 1),
-(16, 'Entrega1', '0', '0', '2017-06-07', 1),
-(17, 'Entrega2', '0', '0', '2017-06-07', 1);
+(18, 'backup1', '0', '0', '2017-06-07', 1),
+(19, 'backup2', '0', '0', '2017-06-07', 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +198,7 @@ INSERT INTO `users` (`id`, `perfil`, `username`, `password`, `nome`, `sobrenome`
 
 CREATE TABLE `valser` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(30) NOT NULL,
+  `tipo` int(11) NOT NULL,
   `iniVal` date NOT NULL,
   `valor` varchar(10) NOT NULL,
   `fimVal` date DEFAULT NULL,
@@ -215,10 +211,9 @@ CREATE TABLE `valser` (
 --
 
 INSERT INTO `valser` (`id`, `tipo`, `iniVal`, `valor`, `fimVal`, `datCad`, `usuCad`) VALUES
-(9, 'Formatacao1', '2017-06-07', '55', '2017-06-07', '2017-06-07', 1),
-(10, 'Formatacao2', '2017-06-07', '55', '0000-00-00', '2017-06-07', 1),
-(11, 'Backup1', '2017-06-07', '66', '2017-06-07', '2017-06-07', 1),
-(12, 'Backup2', '2017-06-07', '66', '0000-00-00', '2017-06-07', 1);
+(21, 10, '2046-05-06', '654', '2046-05-06', '2017-06-07', 1),
+(22, 10, '2017-06-08', '654', '0000-00-00', '2017-06-08', 1),
+(23, 18, '2017-06-08', '66', '0000-00-00', '2017-06-08', 1);
 
 --
 -- Indexes for dumped tables
@@ -266,7 +261,7 @@ ALTER TABLE `users`
 ALTER TABLE `valser`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuCadastro_idx` (`usuCad`),
-  ADD KEY `tiposervicod` (`tipo`);
+  ADD KEY `tipoServicoDe` (`tipo`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -276,22 +271,22 @@ ALTER TABLE `valser`
 -- AUTO_INCREMENT for table `aviso`
 --
 ALTER TABLE `aviso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tipser`
 --
 ALTER TABLE `tipser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -301,7 +296,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `valser`
 --
 ALTER TABLE `valser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- Constraints for dumped tables
 --
@@ -322,7 +317,7 @@ ALTER TABLE `cliente`
 -- Limitadores para a tabela `servico`
 --
 ALTER TABLE `servico`
-  ADD CONSTRAINT `tiposervicoO` FOREIGN KEY (`tipo`) REFERENCES `valser` (`id`),
+  ADD CONSTRAINT `tiposervicoO` FOREIGN KEY (`tipo`) REFERENCES `tipser` (`id`),
   ADD CONSTRAINT `usuariocadastrouservico` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
 
 --
@@ -335,6 +330,7 @@ ALTER TABLE `tipser`
 -- Limitadores para a tabela `valser`
 --
 ALTER TABLE `valser`
+  ADD CONSTRAINT `tipoServicoDe` FOREIGN KEY (`tipo`) REFERENCES `tipser` (`id`),
   ADD CONSTRAINT `usuariocadastrouvalor` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
