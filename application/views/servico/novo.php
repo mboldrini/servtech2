@@ -57,7 +57,7 @@
 			<?php foreach( $valorservico as $valser ): ?>
 				<?php foreach( $tiposervico as $tipo ): ?>
 					<?php if( $tipo->id == $valser->tipo ){ ?>
-						<option value="<?php echo $tipo->id; ?>"><?php echo $tipo->tipo; ?> - $<?php echo $valser->valor; ?></option>
+						<option value="<?php echo $valser->id; ?>"><?php echo $tipo->tipo; ?> - $<?php echo $valser->valor; ?></option>
 					<?php } ?>
 				<?php endforeach; ?>
 			<?php endforeach; ?>

@@ -35,7 +35,7 @@ class Servico extends CI_Controller {
 			'infos'			=>	$pegaInfos,
 			'servicos'		=>	$this->Funcoes->getAll('servico'),
 			'clientes'		=>  $this->Funcoes->getAll('cliente'),
-			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
+			'valorservico'	=> 	$this->Funcoes->getAll('valser'),
 			'tiposervico'	=>	$this->Funcoes->getAll('tipser'),
 			'tecnicos'		=>  $this->Funcoes->getAll('users'),
 
@@ -184,7 +184,7 @@ class Servico extends CI_Controller {
 			'editar'	=> 	$this->Funcoes->getById($idEditar, 'servico'),
 			'clientes'	=>  $this->Funcoes->getAll('cliente'),
 			'tiposervico'	=> 	$this->Funcoes->getAll('tipser'),
-			'valorservico'	=> 	$this->Funcoes->getValores('valser'),
+			'valorservico'	=> 	$this->Funcoes->getAll('valser'),
 			'usuarios'	=>	$this->Funcoes->getAll('users'),
 		);
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jun-2017 às 16:44
+-- Generation Time: 14-Jun-2017 às 19:16
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -72,7 +72,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `tipo`, `registro`, `datNas`, `celular`, `telefone`, `email`, `endereco`, `datCad`, `observacoes`, `usuCad`) VALUES
-(5, 'Willyt', 'J', '12', '15/3/1986', '886-(905)361-2012', '62-(555)386-4070', 'wozintsev1@friendfeed.com', '53 Westport Court', '13/7/2016', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.', 1),
+(5, 'Willyt', 'F', '125.456.546-20', '15/3/1986', '886-(905)361-2012', '62-(555)386-4070', 'wozintsev1@friendfeed.com', '53 Westport Court', '13/7/2016', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.', 1),
 (6, 'Guy', 'J', '12', '7/1/1982', '48-(739)570-4612', '57-(295)659-8744', 'gdaton2@discuz.net', '3183 Granby Trail', '23/12/2017', 'Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.', 1),
 (23, 'Alasteir', 'F', '14', '7/8/1999', '374-(787)127-1508', '355-(910)236-8487', 'awoltersj@trellian.com', '93717 Old Gate Drive', '16/10/2017', 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.', 1),
 (24, 'Tamarah', 'F', '11', '10/11/1944', '62-(465)752-9473', '420-(339)162-7096', 'ttwelvesk@amazon.com', '7631 Myrtle Park', '30/4/2017', 'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 1),
@@ -132,8 +132,8 @@ CREATE TABLE `servico` (
 --
 
 INSERT INTO `servico` (`id`, `codCli`, `tipo`, `solicitado`, `detectado`, `preCon`, `status`, `solucao`, `observacao`, `datCon`, `tecRes`, `acrescimo`, `desconto`, `datCad`, `usuCad`) VALUES
-(3, 5, 10, 'asf', '', '2017-06-08', '1', '', '', '0000-00-00', 1, '', '', '2017-06-08', 1),
-(4, 27, 18, 'asf', '', '2065-05-05', '2', '', '', '0000-00-00', 1, '', '', '2017-06-08', 1);
+(7, 5, 25, '654654', '', '0000-00-00', '1', '', '', '0000-00-00', 1, '', '', '2017-06-14', 1),
+(8, 23, 24, 'asfasf', '', '0000-00-00', '1', '', '', '0000-00-00', 1, '', '', '2017-06-14', 1);
 
 -- --------------------------------------------------------
 
@@ -155,10 +155,8 @@ CREATE TABLE `tipser` (
 --
 
 INSERT INTO `tipser` (`id`, `tipo`, `perDes`, `perAcr`, `datCad`, `usuCad`) VALUES
-(10, 'Formatacao1', '0', '0', '2017-06-06', 1),
-(11, 'Formatacao2', '0', '0', '2017-06-07', 1),
-(18, 'backup1', '0', '0', '2017-06-07', 1),
-(19, 'backup2', '0', '0', '2017-06-07', 1);
+(20, 'Formatacao', '1', '1', '2017-06-14', 1),
+(21, 'Backup', '0', '1', '2017-06-14', 1);
 
 -- --------------------------------------------------------
 
@@ -211,9 +209,9 @@ CREATE TABLE `valser` (
 --
 
 INSERT INTO `valser` (`id`, `tipo`, `iniVal`, `valor`, `fimVal`, `datCad`, `usuCad`) VALUES
-(21, 10, '2046-05-06', '654', '2046-05-06', '2017-06-07', 1),
-(22, 10, '2017-06-08', '654', '0000-00-00', '2017-06-08', 1),
-(23, 18, '2017-06-08', '66', '0000-00-00', '2017-06-08', 1);
+(24, 20, '2017-06-14', '150', '2065-04-06', '2017-06-14', 1),
+(25, 21, '2017-06-14', '100', '0000-00-00', '2017-06-14', 1),
+(26, 20, '2017-06-15', '100', '0000-00-00', '2017-06-14', 1);
 
 --
 -- Indexes for dumped tables
@@ -281,12 +279,12 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT for table `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tipser`
 --
 ALTER TABLE `tipser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -296,7 +294,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `valser`
 --
 ALTER TABLE `valser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- Constraints for dumped tables
 --
@@ -317,7 +315,7 @@ ALTER TABLE `cliente`
 -- Limitadores para a tabela `servico`
 --
 ALTER TABLE `servico`
-  ADD CONSTRAINT `tiposervicoO` FOREIGN KEY (`tipo`) REFERENCES `tipser` (`id`),
+  ADD CONSTRAINT `tiposervicoO` FOREIGN KEY (`tipo`) REFERENCES `valser` (`id`),
   ADD CONSTRAINT `usuariocadastrouservico` FOREIGN KEY (`usuCad`) REFERENCES `users` (`id`);
 
 --

@@ -9,18 +9,17 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>/assets/style.css">
 </head>
 <body>
-<div class="container-fluid"><div class="row">
 <div class="ordem">
-	
+
 	<div class="cabecalho">
 
 		<div class="linha">
-			<section  class="col-xs-8 borda1">
+			<section  class="col-xs-7">
 				<b>
-					<h3>Ordem de Serviço</h3>
+					<h4>Ordem de Serviço</h4>
 				</b>
 			</section><!--section titulo da os-->
-			<section class="col-xs-2 borda1 cabecalho-direita">
+			<section class="col-xs-3 cabecalho-direita">
 				<div class="row">
 					<b>Código do Serviço: </b>
 					<span class="pull-right"><?php echo $ordem->id; ?></span>
@@ -58,7 +57,7 @@
 					</section>
 				</div><!-- primeira col-md-4 -->
 				
-				<div class="col-md-4">
+				<div class="col-xs-3">
 					<div class="row">	
 						<b>Telefone: </b>
 						<span><?php echo $cliente->telefone; ?></span>
@@ -73,7 +72,7 @@
 					</div>
 				</div><!--segunda col-md-4-->
 				
-				<div class="col-md-4">
+				<div class="col-xs-3">
 					<div class="row">
 						<b>Código do Cliente: </b>
 						<span><?php echo $cliente->id; ?></span>
@@ -140,18 +139,21 @@
 				<h3>Finalização</h3>
 			</div>
 		</div><!--linha-->
-		<div class="col-md-4">
-			<b>Data de Conclusão: </b>
-			<span>
-				<?php echo $ordem->datCon; ?>
-			</span>
+		
+		<div class="col-xs-5">
+			<div class="col-xs-12">
+				<b>Data de Conclusão: </b>
+				<span>
+					<?php echo implode('/', array_reverse(explode('-', $ordem->datCon))); ?>
+				</span>
+			</div>
+			<div class="col-xs-12">
+				<b>Técnico Responsável: </b>	
+				<span>Matheus Boldrini.</span>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<b>Técnico Responsável: </b>	
-			<span>Matheus Boldrini.</span>
-		</div>
-		<div class="col-md-3 pull-right">
 
+		<div class="col-xs-5">
 			<section>
 				<b>Acréscimo de Valor:</b>
 				<span class="pull-right">
@@ -162,8 +164,6 @@
 					<?php } ?>
 				</span>
 			</section>
-
-
 			<section>
 				<b>Desconto:</b>
 				<span class="pull-right">
@@ -174,7 +174,6 @@
 					<?php } ?>
 				</span>
 			</section>
-
 			<section class="linha">
 				<b>Valor do Serviço:</b>
 				<span class="pull-right">
@@ -185,7 +184,6 @@
 					<?php endforeach; ?>
 				</span>
 			</section>
-
 			<section>
 				<b>Total:</b>
 				<span class="pull-right">
@@ -201,7 +199,6 @@
 						$final = ( $valor + $acrescimo ) - $desconto;
 						echo "R$ " . $final;
 					?>
-
 				</span>
 			</section>
 		</div>
@@ -215,16 +212,15 @@
 		</section>
 	</div><!--finalizacao-->
 
-	<div class="assinatura col-md-12">
+	<div class="assinatura col-xs-12">
 		
-		<div class="col-md-4">
+		<div class="col-xs-5">
 			<div class="linha rasura"></div>
 			<b class="text-middle">Técnico Responsável</b>
 		</div>
 
-		<div class="col-md-4"></div>
 
-		<div class="col-md-4">
+		<div class="col-xs-5">
 			<div class="linha rasura"></div>
 			<b class="text-middle">Cliente</b>
 		</div>
@@ -233,7 +229,6 @@
 
 
 </div><!--ordem-->
-</div></div><!--geralzao-->
 
 
 

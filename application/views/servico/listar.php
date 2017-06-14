@@ -49,17 +49,26 @@
                         <?php echo "<span class=\"label label-danger\">Cancelado</span>"; ?>
                     <?php } ?>
                 </td>
+
                 <td>
-                    <?php foreach( $tiposervico as $tipo ): ?>
-                        <?php if( $tipo->id == $servico->tipo ){ ?>
-                            <?php echo $tipo->tipo; ?>
+                   <?php foreach( $valorservico as $valser ){ ?>
+                        <?php if( $valser->id == $servico->tipo ){ ?>
+
+                            <?php foreach( $tiposervico as $tipo){ ?>
+                                <?php if($tipo->id == $valser->tipo){ ?>
+                                    <?php echo $tipo->tipo; ?>
+                                <?php } ?>
+                            <?php } ?>
+
                         <?php } ?>
-                    <?php endforeach; ?>
+                   <?php } ?>
                 </td>
+
                 <td>
                     <?php foreach( $valorservico as $valser ): ?>
-                        <?php if( $valser->tipo == $servico->tipo ){ ?>
-                            <i class="fa fa-usd"></i><?php echo $valser->valor; ?>
+                        <?php if( $valser->id == $servico->tipo ){ ?>
+                            <i class="fa fa-usd"></i>
+                            <?php echo $valser->valor; ?>
                         <?php } ?>
                     <?php endforeach; ?>
                 </td>

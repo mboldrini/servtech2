@@ -13,7 +13,6 @@ class Ordemservico extends CI_Controller {
 
 		$this->load->model('Funcoes');
 
-		$this->load->library('dompdf_gen');
 
 		$this->load->library('M_pdf');
 
@@ -74,10 +73,11 @@ class Ordemservico extends CI_Controller {
 		$this->load->view('imprimir',$dados);
 
 
-		$this->load->library('M_pdf');
+		$mpdf = new mPDF('utf-8', 'A4');
 
 	    $html = $this->load->view('imprimir',$dados, true);
-	    $this->m_pdf->pdf->WriteHTML($html, 0, true, true);
+
+	    $this->m_pdf->pdf->WriteHTML($html);
 
 	    //download it.
 	    $pdfFilePath = "os_". time() .".pdf";

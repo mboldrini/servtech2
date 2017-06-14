@@ -1,6 +1,9 @@
 .borda1{
 	border: 1px solid red;
 }
+b{
+	font-weight: bold !important;
+}
 .cabecalho, .linha, .servico{
 	overflow: auto;
 }

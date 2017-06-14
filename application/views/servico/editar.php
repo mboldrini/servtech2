@@ -64,13 +64,27 @@
   	<div class="col-md-4">
   		<label for="exampleInputEmail1">Tipo de Serviço:</label>
 		<select name="tipo" id="tipo" class="form-control">
-			<?php foreach( $valorservico as $valor ): ?>
-				<?php if( $valor->id == $editar->tipo ){ ?>
-					<option value="<?php echo $valor->id; ?>" selected><?php echo $valor->tipo; ?></option>
-				<?php }else{ ?>
-					<option value="<?php echo $valor->id; ?>"><?php echo $valor->tipo; ?></option>
-				<?php } ?>
-			<?php endforeach; ?>
+
+			<?php 
+
+				foreach( $valorservico as $valor){
+					if( $valor->id == $editar->tipo ){
+						foreach( $tiposervico as $tipo){
+							if( $tipo->id == $valor->tipo){
+								echo "<option value=".$valor->id." selected>".$tipo->tipo." - ".$valor->valor."</option>";
+							}
+						}
+					}else{
+						foreach( $tiposervico as $tipo){
+							if( $tipo->id == $valor->tipo){
+								echo "<option value=".$valor->id." >".$tipo->tipo." - ".$valor->valor."</option>";
+							}
+						}
+					}
+				}
+
+			 ?>
+
 		</select>
   	</div>
   
