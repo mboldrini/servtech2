@@ -1,5 +1,19 @@
 <div class="container-fluid"><div class="row">
-<div class="ordem">
+
+	<div class="col-md-12">
+		<div class="pull-right">
+			<a class="btn bg-navy" href="<?= base_url('ordemservico/imprimir/' . $ordem->id) ?>" role="button">
+                <i class="fa fa-print "></i>  Imprimir
+            </a>
+		</div>
+
+		<button class="btn btn-default" type="submit" id="botao" name="botao">Button</button>
+
+		<br><br>
+	</div>
+
+
+<div class="ordem" id="ordem">
 	
 	<div class="cabecalho">
 
@@ -61,30 +75,34 @@
 						<span><?php echo $cliente->email; ?></span>
 					</div>
 				</div><!--segunda col-md-4-->
-
+				
+				<div class="col-md-4">
+					<div class="row">
+						<b>Código do Cliente: </b>
+						<span><?php echo $cliente->id; ?></span>
+					</div>
+					<div class="row">
+						<b>Tipo: </b>
+						<span>
+							<?php if( $cliente->tipo == "j" || $cliente->tipo == "J" ){ ?>
+								Pessoa Jurídica
+							<?php }else{ ?>
+								Pessoa Física
+							<?php } ?>
+						</span>
+					</div>
+					<div class="row">
+						<b>CPF/CNPJ:</b>
+						<span><?php echo $cliente->registro; ?></span>
+					</div>
+				</div><!--terceira col-md-4-->
 
 
 			<?php } ?>
 		<?php endforeach; ?>
-
-	
-		
-		<div class="col-md-4">
-			<div class="row">
-				<b>Código do Cliente: </b>
-				<span>65465</span>
-			</div>
-			<div class="row">
-				<b>Tipo: </b>
-				<span>Pessoa Física</span>
-			</div>
-			<div class="row">
-				<b>CPF/CNPJ:</b>
-				<span>000.000.000-20</span>
-			</div>
-		</div><!--terceira col-md-4-->
-
 	</div><!--cabecalho-->
+
+
 
 
 	<div class="servico col-md-12">
@@ -127,24 +145,67 @@
 		</div><!--linha-->
 		<div class="col-md-4">
 			<b>Data de Conclusão: </b>
-			<span>31/02/2022</span>
+			<span>
+				<?php echo $ordem->datCon; ?>
+			</span>
 		</div>
 		<div class="col-md-4">
 			<b>Técnico Responsável: </b>	
 			<span>Matheus Boldrini.</span>
 		</div>
 		<div class="col-md-3 pull-right">
+
 			<section>
 				<b>Acréscimo de Valor:</b>
-				<span class="pull-right">R$ <?php echo $ordem->acrescimo; ?></span>
+				<span class="pull-right">
+					<?php if( $ordem->acrescimo == NULL ){ ?>
+						<?php echo "R$ 00.00"; ?>
+					<?php }else{ ?>
+						R$ <?php echo $ordem->acrescimo; ?>
+					<?php } ?>
+				</span>
 			</section>
-			<section class="linha">
+
+
+			<section>
 				<b>Desconto:</b>
-				<span class="pull-right">R$ <?php echo $ordem->desconto; ?></span>
+				<span class="pull-right">
+					<?php if( $ordem->desconto == NULL ){ ?>
+						<?php echo "R$ 00.00"; ?>
+					<?php }else{ ?>
+						R$ <?php echo $ordem->desconto; ?>
+					<?php } ?>
+				</span>
 			</section>
+
+			<section class="linha">
+				<b>Valor do Serviço:</b>
+				<span class="pull-right">
+					<?php foreach( $valorservico as $valser ): ?>	
+						<?php if( $valser->tipo == $ordem->tipo && $valser->fimVal == "0000-00-00"){ ?>
+							R$ <?php echo $valser->valor; ?>
+						<?php } ?>
+					<?php endforeach; ?>
+				</span>
+			</section>
+
 			<section>
 				<b>Total:</b>
-				<span class="pull-right">R$ 9999FAZER.00</span>
+				<span class="pull-right">
+					<?php 
+						$valor 		= 0;
+						$desconto	= $ordem->desconto;
+						$acrescimo 	= $ordem->acrescimo;
+						foreach( $valorservico as $valser ){ 
+							if( $valser->tipo == $ordem->tipo && $valser->fimVal == "0000-00-00"){ 
+								$valor = $valser->valor;
+						 	} 
+						} 
+						$final = ( $valor + $acrescimo ) - $desconto;
+						echo "R$ " . $final;
+					?>
+
+				</span>
 			</section>
 		</div>
 		<section class="col-md-12 observacoes">
