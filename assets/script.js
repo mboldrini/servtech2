@@ -54,40 +54,50 @@ $(document).ready(function(){
       
 
 // Validacao de CPF & CNPJ
-  // $("#tipo" ).change(function() {
+  $("#tipo" ).change(function() {
 
-  //   alert("asf");
-      
-  //     $selecionado = $('#tipo').val();
+      $selecionado = $('#tipo').val();
 
-  //     if( $selecionado == "f" ){
-  //       // $(".label1").text("CPF");
-  //       $('#registro').cpfcnpj({
-  //               mask: true,
-  //               validate: 'cpf',
-  //               event: 'change',
-  //               handler: '',
-  //               ifValid: function (input) { input.removeClass("error"); },
-  //               ifInvalid: function (input) { input.addClass("error"); }
-  //           });
-  //     }else if( $selecionado == "j"){
-  //       // $(".label1").text("CNPJ");
-  //       $('#registro').cpfcnpj({
-  //               mask: true,
-  //               validate: 'cnpj',
-  //               event: 'change',
-  //               handler: '',
-  //               ifValid: function (input) { input.removeClass("error"); },
-  //               ifInvalid: function (input) { input.addClass("error"); }
-  //           });
-  //     }else{
-  //       $(".label1").text("Registro (CPF/CNPJ): ");
-  //     }
+      if( $selecionado == "F" ){
+        $("#labelregistro").text("Registro (CPF):");
+        $('.registro').cpfcnpj({
+                mask: true,
+                validate: 'cpf',
+                event: 'change',
+                handler: '',
+                ifValid: function (input) { input.removeClass("error"); $('.btnNovoCliente').removeClass("disabled"); },
+                ifInvalid: function (input) { input.addClass("error"); $('.btnNovoCliente').addClass("disabled"); }
+            });
+      }else if( $selecionado == "J"){
+        $("#labelregistro").text("Registro (CNPJ):");
+        $('.registro').cpfcnpj({
+                mask: true,
+                validate: 'cnpj',
+                event: 'change',
+                handler: '',
+                ifValid: function (input) { input.removeClass("error"); $('.btnNovoCliente').removeClass("disabled");  },
+                ifInvalid: function (input) { input.addClass("error");  $('.btnNovoCliente').addClass("disabled"); }
+            });
+      }else{
+        $(".label1").text("Registro (CPF/CNPJ): ");
+      }
 
-  // });//tipooo
+  });//tipooo
 // Fim Validacao de CPF & CNPJ
 
+// mascaras no cadastro de clientes
+  $('.telefone').mask('(00) 0000-0000');
+  $('.celular').mask('(00) 0 0000-0000');
+// FIM mascaras cadastro de clientes
 
+// cadastro de servico
+  $('.acrescimo').mask("#.##0,00", {reverse: true});
+  $('.desconto').mask("#.##0,00", {reverse: true});
+// FIM cadastro de servico
+
+// valor de servico
+  $('.valor').mask("#.##0,00", {reverse: true});
+// FIM valor de servico
 
 
 

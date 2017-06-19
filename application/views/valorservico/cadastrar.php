@@ -24,15 +24,15 @@
 
 	<div class="form-group">
 	    <label for="exampleInputEmail1">Valor (R$):</label>
-	    <?php echo form_input(
-	      'valor', 
-	      '',
-	      array( 'class'    	=>  'form-control col-md-3',
-	             'required'   	=>  'required',
-	             'placeholder'  =>  'Valor do Serviço',
-	            ) 
-	        ); 
-	    ?>
+	    <?php 
+        echo form_input([
+              'type'      => 'text',
+              'name'      => 'valor',
+              'id'        => 'valor', 
+              'class'     => 'valor form-control col-md-3',
+              'placeholder'   => 'Valor',
+          ]);
+        ?>
   	</div>
   
   <div class="form-group">

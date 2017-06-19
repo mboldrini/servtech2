@@ -3,8 +3,6 @@
  * Developed by: Guilherme Gomes (gmgomess@gmail.com)
  * Date: 2014-10-06
  */
- alert("plugin");
- 
 (function ($) {
     var type = null;
 

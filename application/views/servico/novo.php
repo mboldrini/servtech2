@@ -167,26 +167,36 @@
 
 	<div class="col-md-3">
 		<label for="exampleInputEmail1">Acréscimo de Valor:</label>
-	    <?php echo form_input(
-	      'acrescimo', 
-	      '',
-	      array( 'class'    =>  'form-control col-md-3',
-	             'placeholder'  =>  'Acrescimo',
-	            ) 
-	        ); 
-	    ?>
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'text',
+            	'name'  		=> 'acrescimo',
+            	'id'    		=> 'acrescimo', 
+            	'class' 		=> 'acrescimo form-control col-md-3',
+            	'placeholder' 	=> 'Acrescimo',
+        	]);
+        ?>
 	</div>
 
 	<div class="col-md-3">
 		<label for="exampleInputEmail1">Desconto de Valor:</label>
-	    <?php echo form_input(
+	   <!--  <?php echo form_input(
 	      'desconto', 
 	      '',
 	      array( 'class'    =>  'form-control col-md-3',
 	             'placeholder'  =>  'Desconto',
 	            ) 
 	        ); 
-	    ?>
+	    ?> -->
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'text',
+            	'name'  		=> 'desconto',
+            	'id'    		=> 'desconto', 
+            	'class' 		=> 'desconto form-control col-md-3',
+            	'placeholder' 	=> 'Desconto',
+        	]);
+        ?>
 	</div>
 
 	<div class="col-md-2">

@@ -44,19 +44,17 @@
   	</div>
 
  	<div class="col-md-4">
-		<label for="exampleInputEmail1">Registro (CPF/CNPJ):</label>
-	    <?php echo form_input(
-	    	'registro', 
-	      	'' ,
-	      	array( 
-	      		'class' 		=> 	'registro',
-	      		'id' 			=> 	'registro',
-	      		'class'			=>	'form-control col-md-3',
-	            'placeholder'	=>	'CPF/CNPJ',	         
-	            ) 
-	        ); 
-	    ?>
-	</div>
+		<label for="exampleInputEmail1" id="labelregistro">Registro (CPF/CNPJ):</label>
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'text',
+            	'name'  		=> 'registro',
+            	'id'    		=> 'registro', 
+            	'class' 		=> 'registro form-control col-md-3',
+            	'placeholder' 	=> 'CPF ou CNPJ',
+        	]);
+        ?>
+	</div><!-- div area de registro -->
 
 	<div class="col-md-2">
 		<label for="exampleInputEmail1">Data de Nascimento:</label>
@@ -75,26 +73,28 @@
 
   	<div class="col-md-2">
   		<label for="exampleInputEmail1">Celular:</label>
-	    <?php echo form_input(
-	      'celular', 
-	      '' ,
-	      array( 'class'		=>	'form-control col-md-3',
-	             'placeholder'	=>	'Celular',
-	            ) 
-	        ); 
-	    ?>
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'text',
+            	'name'  		=> 'celular',
+            	'id'    		=> 'celular', 
+            	'class' 		=> 'celular form-control col-md-3',
+            	'placeholder' 	=> 'Celular',
+        	]);
+        ?>
   	</div>
 
   	<div class="col-md-2">
   		<label for="exampleInputEmail1">Telefone:</label>
-	    <?php echo form_input(
-	      'telefone', 
-	      '' ,
-	      array( 'class'		=>	'form-control col-md-3',
-	             'placeholder'	=>	'Telefone',
-	            ) 
-	        ); 
-	    ?>
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'text',
+            	'name'  		=> 'telefone',
+            	'id'    		=> 'telefone', 
+            	'class' 		=> 'telefone form-control col-md-3',
+            	'placeholder' 	=> 'Telefone',
+        	]);
+        ?>
   	</div>
   	
 	<div class="col-md-5">
@@ -155,7 +155,7 @@
 	
 	<div class="col-md-7">
 		<br>
-		<button type="submit" class="btn btn-primary">Cadastrar</button>
+		<button type="submit" class="btn btn-primary btnNovoCliente">Cadastrar</button>
 	</div>
 
 
