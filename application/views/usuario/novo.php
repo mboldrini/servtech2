@@ -85,14 +85,16 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Email:</label>
-    <?php echo form_input(
-      'email', 
-      '',
-      array( 'class'		=>	'form-control col-md-3',
-             'placeholder'	=>	'Email',
-            ) 
-        ); 
-    ?>
+      <?php 
+        echo form_input([
+              'type'        =>  'email',
+              'name'        =>  'email',
+              'id'          =>  'email', 
+              'class'       =>  'form-control col-md-3',
+              'placeholder' =>  'E-mail',
+              'required'    =>  'required',
+          ]);
+        ?>
   </div>
 
 

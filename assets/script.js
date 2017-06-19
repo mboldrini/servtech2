@@ -13,9 +13,7 @@ $(document).ready(function(){
   });
 
 
- $(function () {
-  
-
+  $(function () {
     //Datemask dd/mm/yyyy
     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
     //Datemask2 mm/dd/yyyy
@@ -53,18 +51,44 @@ $(document).ready(function(){
 
 
 
-/// parte dos valores no cadastro de servicos
-//alert("asfasf");
+      
 
-// var $banana = $( "#tipo option:selected" ).text();
-// alert( $banana );
+// Validacao de CPF & CNPJ
+  // $("#tipo" ).change(function() {
 
-// $("#tipo").click(function(){
+  //   alert("asf");
+      
+  //     $selecionado = $('#tipo').val();
 
-//   var $banana = $( "#tipo option:selected" ).name();
+  //     if( $selecionado == "f" ){
+  //       // $(".label1").text("CPF");
+  //       $('#registro').cpfcnpj({
+  //               mask: true,
+  //               validate: 'cpf',
+  //               event: 'change',
+  //               handler: '',
+  //               ifValid: function (input) { input.removeClass("error"); },
+  //               ifInvalid: function (input) { input.addClass("error"); }
+  //           });
+  //     }else if( $selecionado == "j"){
+  //       // $(".label1").text("CNPJ");
+  //       $('#registro').cpfcnpj({
+  //               mask: true,
+  //               validate: 'cnpj',
+  //               event: 'change',
+  //               handler: '',
+  //               ifValid: function (input) { input.removeClass("error"); },
+  //               ifInvalid: function (input) { input.addClass("error"); }
+  //           });
+  //     }else{
+  //       $(".label1").text("Registro (CPF/CNPJ): ");
+  //     }
 
-//   $("#valor").val( "teste" );
+  // });//tipooo
+// Fim Validacao de CPF & CNPJ
 
-// });
 
-});
+
+
+
+});//geral do Script

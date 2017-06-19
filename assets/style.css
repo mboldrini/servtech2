@@ -1,9 +1,6 @@
 .borda1{
 	border: 1px solid red;
 }
-b{
-	font-weight: bold !important;
-}
 .cabecalho, .linha, .servico{
 	overflow: auto;
 }
@@ -28,4 +25,4 @@ b{
 	margin-top: 65px !important;
 	margin-bottom: 2px;
 }
-
+.error { border-color: #F70202 }

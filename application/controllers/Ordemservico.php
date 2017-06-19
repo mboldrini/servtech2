@@ -46,10 +46,6 @@ class Ordemservico extends CI_Controller {
 
 	public function imprimir()	{
 
-		$this->load->library('dompdf_gen');
-
-
-
 		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
 			redirect(base_url().'login');

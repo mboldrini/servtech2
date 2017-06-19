@@ -29,7 +29,7 @@ class Contas extends CI_Controller {
 		$pegaInfos = $this->Usuario->pegaUsuario($nome);
 
 		$dados = array(
-			'pasta'		=> 'Usuario',
+			'pasta'		=> 'usuario',
 			'tela' 		=> 'listar',
 			'titulo' 	=> 'Usuários Cadastrados',
 			'descricao' => ' - Lista com todos os usuários cadastrados no sistema',
@@ -172,7 +172,7 @@ class Contas extends CI_Controller {
 		}		
 
 		$dados = array(
-			'pasta'		=> 'Usuario',
+			'pasta'		=> 'usuario',
 			'tela' 		=> 'novo',
 			'titulo' 	=> 'Cadastrar Novo Usuário',
 			'infos' 	=> $pegaInfos,

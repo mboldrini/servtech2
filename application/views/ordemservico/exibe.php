@@ -6,9 +6,6 @@
                 <i class="fa fa-print "></i>  Imprimir
             </a>
 		</div>
-
-		<button class="btn btn-default" type="submit" id="botao" name="botao">Button</button>
-
 		<br><br>
 	</div>
 

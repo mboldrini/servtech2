@@ -31,6 +31,7 @@
   		<label for="Status">Tipo:</label>
 		<?php 
 			$status = array(
+				"----"			=> '',
 				"P. Física"		=> 'F',
 				"P. Jurídica"	=> 'J',
 			);
@@ -42,14 +43,16 @@
 		</select>
   	</div>
 
-
-	<div class="col-md-4">
+ 	<div class="col-md-4">
 		<label for="exampleInputEmail1">Registro (CPF/CNPJ):</label>
 	    <?php echo form_input(
-	      'registro', 
-	      '' ,
-	      array( 'class'		=>	'form-control col-md-3',
-	             'placeholder'	=>	'CPF/CNPJ',	         
+	    	'registro', 
+	      	'' ,
+	      	array( 
+	      		'class' 		=> 	'registro',
+	      		'id' 			=> 	'registro',
+	      		'class'			=>	'form-control col-md-3',
+	            'placeholder'	=>	'CPF/CNPJ',	         
 	            ) 
 	        ); 
 	    ?>
@@ -96,14 +99,17 @@
   	
 	<div class="col-md-5">
 		<label for="exampleInputEmail1">Email:</label>
-	    <?php echo form_input(
-	      'email', 
-	      '' ,
-	      array( 'class'		=>	'form-control col-md-3',
-	             'placeholder'	=>	'Email',
-	            ) 
-	        ); 
-	    ?>
+	   
+	    <?php 
+	    	echo form_input([
+            	'type'  		=> 'email',
+            	'name'  		=> 'email',
+            	'id'    		=> 'email', 
+            	'class' 		=> 'form-control col-md-3',
+            	'placeholder' 	=> 'E-mail',
+            	'required'		=>'required',
+        	]);
+        ?>
 	</div>
 
   	<div class="col-md-6">
