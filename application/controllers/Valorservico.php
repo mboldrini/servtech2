@@ -111,6 +111,7 @@ class Valorservico extends CI_Controller {
 		$tabela = "valser";
   		$coluna = array("tipo"=> $campo );
 	   	if( $this->Funcoes->countWhere($tabela, $coluna ) >= 1 ){
+	   		$this->form_validation->set_message('validaTipo', 'Já existe um valor em aberto para esse serviço!');
 	    	return FALSE;
 		}else{
 	    	return TRUE;
