@@ -6,7 +6,7 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      Versão 2.5.7 ~ Beta
+      Versão Alpha Closed
     </div>
     <strong>Copyright &copy; 2017 <a href="#">Mutatu Software House</a>.</strong> All rights reserved.
   </footer>

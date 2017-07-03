@@ -6,17 +6,10 @@ class Ordemservico extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library(array('session'));
-
 		$this->load->helper('form', 'funcoes_helper');
-		#pegar as infos dos usuarios
 		$this->load->model('Usuario');
-
 		$this->load->model('Funcoes');
-
-
 		$this->load->library('M_pdf');
-
-
 	}
 	
 
@@ -32,14 +25,15 @@ class Ordemservico extends CI_Controller {
 		$idEditar = $this->uri->segment(3);
 
 		$dados = array(
-			'pasta'		=>	'ordemservico',
-			'tela'		=>	'exibe',
-			'titulo'	=>	'O.S.',
-			'descricao'	=> 	'Ordem de Serviço',
-			'infos'		=>	$pegaInfos,
-			'ordem'		=>  $this->Funcoes->getById($idEditar, 'servico'),
-			'clientes'	=>	$this->Funcoes->getAll('cliente'),
-			'valorservico' =>$this->Funcoes->getAll('valser'),
+			'pasta'			=>	'ordemservico',
+			'tela'			=>	'exibe',
+			'titulo'		=>	'O.S.',
+			'descricao'		=> 	'Ordem de Serviço',
+			'infos'			=>	$pegaInfos,
+			'ordem'			=>  $this->Funcoes->getById($idEditar, 'servico'),
+			'clientes'		=>	$this->Funcoes->getAll('cliente'),
+			'valorservico' 	=>	$this->Funcoes->getAll('valser'),
+			'tecnicos' 		=>	$this->Funcoes->getAll('users'),
 		);
 		$this->load->view('tela',$dados);
 	}
@@ -59,12 +53,13 @@ class Ordemservico extends CI_Controller {
 		$dados = array(
 			// 'pasta'		=>	'ordemservico',
 			// 'tela'		=>	'imprimir',
-			'titulo'	=>	'O.S.',
-			'descricao'	=> 	'Ordem de Serviço',
-			'infos'		=>	$pegaInfos,
-			'ordem'		=>  $this->Funcoes->getById($idEditar, 'servico'),
-			'clientes'	=>	$this->Funcoes->getAll('cliente'),
-			'valorservico' =>$this->Funcoes->getAll('valser'),
+			'titulo'		=>	'O.S.',
+			'descricao'		=> 	'Ordem de Serviço',
+			'infos'			=>	$pegaInfos,
+			'ordem'			=>  $this->Funcoes->getById($idEditar, 'servico'),
+			'clientes'		=>	$this->Funcoes->getAll('cliente'),
+			'valorservico' 	=>	$this->Funcoes->getAll('valser'),
+			'tecnicos' 		=>	$this->Funcoes->getAll('users'),
 		);
 		$this->load->view('imprimir',$dados);
 

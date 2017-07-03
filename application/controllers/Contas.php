@@ -98,7 +98,7 @@ class Contas extends CI_Controller {
 		}
 
 		$dados = array(
-			'pasta'		=> 'Usuario',
+			'pasta'		=> 'usuario',
 			'tela' 		=> 'editar',
 			'titulo' 	=> 'Editar Registro de Usuário',
 			'infos' 	=> $pegaInfos,
@@ -199,7 +199,7 @@ class Contas extends CI_Controller {
 		$idExcluir = $this->uri->segment(3);
 
 		$dados = array(
-			'pasta'		=> 'Usuario',
+			'pasta'		=> 'usuario',
 			'tela' 		=> 'excluir',
 			'titulo' 	=> 'Excluir Usuario',
 			'infos' 	=> $pegaInfos,
@@ -248,7 +248,7 @@ class Contas extends CI_Controller {
 		}
 
 		$dados = array(
-			'pasta'		=> 'Usuario',
+			'pasta'		=> 'usuario',
 			'tela' 		=> 'editarsenha',
 			'titulo' 	=> 'Editar Senha',
 			'infos' 	=> $pegaInfos,

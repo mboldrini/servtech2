@@ -9,9 +9,7 @@
 		<br><br>
 	</div>
 
-
 <div class="ordem" id="ordem">
-	
 	<div class="cabecalho">
 
 		<div class="linha">
@@ -100,8 +98,6 @@
 	</div><!--cabecalho-->
 
 
-
-
 	<div class="servico col-md-12">
 		<div class="linha">
 			<div class="col-md-12">
@@ -140,15 +136,34 @@
 				<h3>Finalização</h3>
 			</div>
 		</div><!--linha-->
+
 		<div class="col-md-4">
+
+			<b>Previsão de Conclusão: </b>
+			<span>
+				<?php $dataPreCon = implode('/', array_reverse(explode('-', $ordem->preCon ))) ?>
+				<?php echo $dataPreCon; ?>
+			</span>
+
+			<br>
+
 			<b>Data de Conclusão: </b>
 			<span>
-				<?php echo $ordem->datCon; ?>
+				<?php $dataConclusao = implode('/', array_reverse(explode('-', $ordem->datCon ))) ?>
+				<?php echo $dataConclusao; ?>
 			</span>
+
 		</div>
+
 		<div class="col-md-4">
 			<b>Técnico Responsável: </b>	
-			<span>Matheus Boldrini.</span>
+			<span>
+				<?php foreach( $tecnicos as $tecnico ): ?>
+					<?php if( $tecnico->id == $ordem->tecRes ){ ?>
+						<?php echo $tecnico->nome; echo " "; echo $tecnico->sobrenome; ?>
+					<?php } ?>
+				<?php endforeach; ?>
+			</span>
 		</div>
 		<div class="col-md-3 pull-right">
 
@@ -178,9 +193,9 @@
 			<section class="linha">
 				<b>Valor do Serviço:</b>
 				<span class="pull-right">
-					<?php foreach( $valorservico as $valser ): ?>	
-						<?php if( $valser->tipo == $ordem->tipo && $valser->fimVal == "0000-00-00"){ ?>
-							R$ <?php echo $valser->valor; ?>
+					<?php foreach( $valorservico as $valor ): ?>
+						<?php if( $valor->id == $ordem->tipo){ ?>
+							R$ <?php echo $valor->valor; ?>
 						<?php } ?>
 					<?php endforeach; ?>
 				</span>
@@ -190,18 +205,16 @@
 				<b>Total:</b>
 				<span class="pull-right">
 					<?php 
-						$valor 		= 0;
 						$desconto	= $ordem->desconto;
 						$acrescimo 	= $ordem->acrescimo;
 						foreach( $valorservico as $valser ){ 
-							if( $valser->tipo == $ordem->tipo && $valser->fimVal == "0000-00-00"){ 
+							if( $valser->id == $ordem->tipo ){ 
 								$valor = $valser->valor;
 						 	} 
 						} 
 						$final = ( $valor + $acrescimo ) - $desconto;
 						echo "R$ " . $final;
 					?>
-
 				</span>
 			</section>
 		</div>
