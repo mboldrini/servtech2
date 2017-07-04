@@ -9,7 +9,7 @@ class Ordemservico extends CI_Controller {
 		$this->load->helper('form', 'funcoes_helper');
 		$this->load->model('Usuario');
 		$this->load->model('Funcoes');
-		$this->load->library('M_pdf');
+		// $this->load->library('M_pdf');
 	}
 	
 
@@ -64,15 +64,15 @@ class Ordemservico extends CI_Controller {
 		$this->load->view('imprimir',$dados);
 
 
-		$mpdf = new mPDF('utf-8', 'A4');
+		// $mpdf = new mPDF('utf-8', 'A4');
 
-	    $html = $this->load->view('imprimir',$dados, true);
+	 //    $html = $this->load->view('imprimir',$dados, true);
 
-	    $this->m_pdf->pdf->WriteHTML($html);
+	 //    $this->m_pdf->pdf->WriteHTML($html);
 
-	    //download it.
-	    $pdfFilePath = "os_". time() .".pdf";
-	    $this->m_pdf->pdf->Output($pdfFilePath, "D");   
+	 //    //download it.
+	 //    $pdfFilePath = "os_". time() .".pdf";
+	 //    $this->m_pdf->pdf->Output($pdfFilePath, "D");   
 
 
 
