@@ -9,15 +9,25 @@
 
         <?php 
         	$paginaAtual = $this->uri->segment(1); 
-        	if( $paginaAtual  == 'painel')			{ $pgPainel 		= "active"; }
-        	else if( $paginaAtual == 'cliente')		{ $pgClientes 		= "active"; }
-        	else if( $paginaAtual == 'servico')		{ $pgServicos 		= "active"; }
-        	else if( $paginaAtual == 'tiposervico')	{ $pgTipoServico 	= "active"; }
-        	else if( $paginaAtual == 'valorservico'){ $pgValorServico 	= "active"; }
-        	else if( $paginaAtual == 'mensagens')	{ $pgMensagens 		= "active"; }
-        	else if( $paginaAtual == 'contas')		{ $pgContas 		= "active"; }
-        	else if( $paginaAtual == 'perfil')		{ $pgPerfil 		= "active"; }
-            else{    $pgPainel    =  "active";      }
+        	if( $paginaAtual  == 'painel'){ 
+                $pgPainel = "active"; 
+            }else if( $paginaAtual == 'cliente'){ 
+                $pgClientes = "active"; 
+            }else if( $paginaAtual == 'servico' || $paginaAtual == 'ordemservico'){ 
+                $pgServicos = "active"; 
+            }else if( $paginaAtual == 'tiposervico'){ 
+                $pgTipoServico = "active"; 
+            }else if( $paginaAtual == 'valorservico'){ 
+                $pgValorServico = "active"; 
+            }else if( $paginaAtual == 'mensagens'){ 
+                $pgMensagens = "active"; 
+            }else if( $paginaAtual == 'contas'){ 
+                $pgContas = "active";
+            }else if( $paginaAtual == 'perfil'){ 
+                $pgPerfilb = "active";
+            }else{
+                $pgPainel = "active"; 
+            }
         ?>
 
         <li class="header">Menu</li>
