@@ -19,6 +19,6 @@ class Admin extends CI_Controller {
 
 		$data['tela'] = 'content';
 		//$this->load->view('painel',$data);
-		redirect( base_url() );
+		redirect( base_url() );#teste
 	}
 }
